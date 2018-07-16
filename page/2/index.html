@@ -232,6 +232,133 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://firsttimetogithub.github.io/selenium-wait/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Crystal_Girl">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="crystal's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/selenium-wait/" itemprop="url">Python selenium</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-15T11:12:33+08:00">
+                2018-05-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Python-selenium等待的区别"><a href="#Python-selenium等待的区别" class="headerlink" title="Python selenium等待的区别"></a>Python selenium等待的区别</h1><h2 id="强制等待-sleep"><a href="#强制等待-sleep" class="headerlink" title="强制等待 sleep()"></a>强制等待 sleep()</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">import time</span><br><span class="line">driver = webdriver.FirefoxProfile()  </span><br><span class="line">driver.get(&apos;http://ehrtest.source3g.com/auth//#/login?ehr&apos;)</span><br><span class="line">time.sleep(10) # 强制等待10秒 </span><br><span class="line">driver.quit()</span><br></pre></td></tr></table></figure>
+<p>优点：简单方便.<br>缺点：缺点时不智能，设置的时间太短，<br>元素还没有加载出来，那照样会报错；设置的时间太长，<br>则会浪费时间，不要小瞧每次几秒的时间，case多了，<br>代码量大了，很多个几秒就会影响整体的运行速度了.</p>
+<hr>
+<h2 id="隐性等待-implicitly-wait"><a href="#隐性等待-implicitly-wait" class="headerlink" title="隐性等待 implicitly_wait()"></a>隐性等待 implicitly_wait()</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">from selenium import webdriver</span><br><span class="line">driver = webdriver.FirefoxProfile()  </span><br><span class="line">driver.implicitly_wait(20) # 隐性等待，最长等30秒  </span><br><span class="line">driver.get(&apos;http://ehrtest.source3g.com/auth//#/login?ehr&apos;)</span><br><span class="line">driver.quit()</span><br></pre></td></tr></table></figure>
+<p>优点：简单方便.<br>缺点：因为随着ajax技术的广泛应用,<br>页面的元素往往都可以时间局部加载,<br>也就是在整个页面没有加载完的时候,<br>可能我们需要的元素已经加载完成了,<br>那就么有必要再等待整个页面的加载<br>执行进行下一步，而隐性等待满足不了这一点.</p>
+<hr>
+<h2 id="显性等待（WebDriverWait）"><a href="#显性等待（WebDriverWait）" class="headerlink" title="显性等待（WebDriverWait）"></a>显性等待（WebDriverWait）</h2><p>selenium中的wait模块的WebDriverWait()方法,<br>配合until或者until_not方法，再辅助以一些判断条件,<br>就可以构成这样一个场景：每经过多少秒就查看一次locator的元素是否可见,<br>如果可见就停止等待，如果不可见就继续等待直到超过规定的时间后，报超时异常。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">from selenium import webdriver  </span><br><span class="line">from selenium.webdriver.support.wait import WebDriverWait  </span><br><span class="line">from selenium.webdriver.support import expected_conditions as EC  </span><br><span class="line">from selenium.webdriver.common.by import By  </span><br><span class="line">driver = webdriver.Firefox()</span><br><span class="line">driver.get(&apos;http://ehrtest.source3g.com/auth//#/login?ehr&apos;) </span><br><span class="line">WebDriverWait(driver,20,0.5).until(EC.presence_of_element_located((By.XPATH, &apos;.//*[@id=&apos;app&apos;]/div/div[2]/form/div[3]/button&apos;)))  </span><br><span class="line">driver.implicitly_wait(20) </span><br><span class="line">driver.close()</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">20：最长等待时间。</span><br><span class="line">0.5：检查间隔时间，每隔0.5秒检查一次操作是否完成。</span><br><span class="line">EC.presence_of_element_located(locator)：判断目标元素是否已经成功加载.</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://firsttimetogithub.github.io/Airtest-IDE-Study/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -812,7 +939,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-count">10</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
