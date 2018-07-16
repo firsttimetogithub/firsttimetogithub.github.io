@@ -79,17 +79,27 @@
 
 
 
-<meta name="description" content="思考中....">
+<meta name="description" content="robotframework 变量的使用1、在判断中使用例如：Set Variable If就是一个典型的例子。再例如下面的:    Run Keywork If ‘${val2}==’abcd’ log efgh         这个例子表示：如果说${val2}和abcd字符串相等，那么就运行log后面的关键字，打印efgh运行结果如下：  2、字符串使用简单的一种方法就是字符串的链接，例如：">
 <meta property="og:type" content="article">
-<meta property="og:title" content="My first Blog">
-<meta property="og:url" content="https://firsttimetogithub.github.io/My-first-Blog/index.html">
+<meta property="og:title" content="robotframework（二）">
+<meta property="og:url" content="https://firsttimetogithub.github.io/robot-framework-2/index.html">
 <meta property="og:site_name" content="crystal&#39;s Blog">
-<meta property="og:description" content="思考中....">
+<meta property="og:description" content="robotframework 变量的使用1、在判断中使用例如：Set Variable If就是一个典型的例子。再例如下面的:    Run Keywork If ‘${val2}==’abcd’ log efgh         这个例子表示：如果说${val2}和abcd字符串相等，那么就运行log后面的关键字，打印efgh运行结果如下：  2、字符串使用简单的一种方法就是字符串的链接，例如：">
 <meta property="og:locale" content="ZH-Hans">
-<meta property="og:updated_time" content="2018-05-03T02:34:17.568Z">
+<meta property="og:image" content="https://firsttimetogithub.github.io/robot-framework-2/8.png">
+<meta property="og:image" content="https://firsttimetogithub.github.io/robot-framework-2/9.png">
+<meta property="og:image" content="https://firsttimetogithub.github.io/robot-framework-2/10.png">
+<meta property="og:image" content="https://firsttimetogithub.github.io/robot-framework-2/11.png">
+<meta property="og:image" content="https://firsttimetogithub.github.io/robot-framework-2/12.png">
+<meta property="og:image" content="https://firsttimetogithub.github.io/robot-framework-2/13.png">
+<meta property="og:image" content="https://firsttimetogithub.github.io/robot-framework-2/14.png">
+<meta property="og:image" content="https://firsttimetogithub.github.io/robot-framework-2/15.png">
+<meta property="og:image" content="https://firsttimetogithub.github.io/robot-framework-2/16.png">
+<meta property="og:updated_time" content="2018-07-16T09:58:21.133Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="My first Blog">
-<meta name="twitter:description" content="思考中....">
+<meta name="twitter:title" content="robotframework（二）">
+<meta name="twitter:description" content="robotframework 变量的使用1、在判断中使用例如：Set Variable If就是一个典型的例子。再例如下面的:    Run Keywork If ‘${val2}==’abcd’ log efgh         这个例子表示：如果说${val2}和abcd字符串相等，那么就运行log后面的关键字，打印efgh运行结果如下：  2、字符串使用简单的一种方法就是字符串的链接，例如：">
+<meta name="twitter:image" content="https://firsttimetogithub.github.io/robot-framework-2/8.png">
 
 
 
@@ -119,13 +129,13 @@
 
 
 
-  <link rel="canonical" href="https://firsttimetogithub.github.io/My-first-Blog/"/>
+  <link rel="canonical" href="https://firsttimetogithub.github.io/robot-framework-2/"/>
 
 
 
 
 
-  <title>My first Blog | crystal's Blog</title>
+  <title>robotframework（二） | crystal's Blog</title>
   
 
 
@@ -232,7 +242,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://firsttimetogithub.github.io/My-first-Blog/">
+    <link itemprop="mainEntityOfPage" href="https://firsttimetogithub.github.io/robot-framework-2/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Crystal_Girl">
@@ -249,7 +259,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">My first Blog</h1>
+          <h1 class="post-title" itemprop="name headline">robotframework（二）</h1>
         
 
         <div class="post-meta">
@@ -261,8 +271,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-03T10:34:17+08:00">
-                2018-05-03
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-07-16T17:42:56+08:00">
+                2018-07-16
               </time>
             
 
@@ -299,7 +309,139 @@
       
 
       
-        
+        <h2 id="robotframework-变量的使用"><a href="#robotframework-变量的使用" class="headerlink" title="robotframework 变量的使用"></a>robotframework 变量的使用</h2><p>1、在判断中使用<br>例如：Set Variable If就是一个典型的例子。再例如下面的:</p>
+<table>
+<thead>
+<tr>
+<th>Run Keywork If</th>
+<th>‘${val2}==’abcd’</th>
+<th>log</th>
+<th>efgh</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>这个例子表示：如果说${val2}和abcd字符串相等，那么就运行log后面的关键字，打印efgh<br>运行结果如下：</p>
+<p><img src="/robot-framework-2/8.png" alt="connect"></p>
+<p>2、字符串使用<br>简单的一种方法就是字符串的链接，例如：</p>
+<table>
+<thead>
+<tr>
+<th>log</th>
+<th>0123${val2}efgh</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>运行结果如下：</p>
+<p><img src="/robot-framework-2/9.png" alt="connect"><br>还有一种就是字符串的截取例如：</p>
+<table>
+<thead>
+<tr>
+<th>log</th>
+<th>${val2[2]}</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>log</td>
+<td>${val[0:3]</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>注意：“[]”里写的是字符串的index索引位置、[0:3]表示index=0到3的截取</p>
+<p>运行结果如图：</p>
+<p><img src="/robot-framework-2/10.png" alt="connect"></p>
+<p>3、参与运算<br>在参与运算的时候需要用到关键字：Evaluate<br>例如：</p>
+<table>
+<thead>
+<tr>
+<th>${cal1}</th>
+<th>Set Variable</th>
+<th>123</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>${cal2}</td>
+<td>Evaluate</td>
+<td>${cal1}+1</td>
+</tr>
+</tbody>
+</table>
+<p>这里跟变量${cal1}赋值为123，然后Evaluate让它+1<br>结果如图：</p>
+<p><img src="/robot-framework-2/11.png" alt="connect"></p>
+<p>但是某些时候你的变量值是字符串的时候，就需要使用强制转换函数int,例如：</p>
+<table>
+<thead>
+<tr>
+<th>${cal1}</th>
+<th>Set Variable</th>
+<th>‘123’</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>${cal2}</td>
+<td>Evaluate</td>
+<td>int(${cal1})+1</td>
+</tr>
+</tbody>
+</table>
+<p>结果如图：</p>
+<p><img src="/robot-framework-2/12.png" alt="connect"></p>
+<hr>
+<h2 id="List变量的使用"><a href="#List变量的使用" class="headerlink" title="List变量的使用"></a>List变量的使用</h2><hr>
+<h3 id="List变量赋值"><a href="#List变量赋值" class="headerlink" title="List变量赋值"></a>List变量赋值</h3><p>List和Scalar类似都可以使用Set Variable来赋值，但是如果使用了Set Variable来赋值的话，会使得把一个List变量或者多个Scalar变量形成的List转换给一个Scalar变量。因此如果你想得到一个真正的List变量。更多的推荐使用：Create List来创建<br>例如：<br>  @{val3} | Set Variable | 1 | 2 | 3<br> —|—|—|—|—<br>  @{listVal3} | Create List | 3 | 2 | 1 </p>
+<p>结果如图所示：</p>
+<p><img src="/robot-framework-2/13.png" alt="connect"></p>
+<hr>
+<h3 id="变量使用"><a href="#变量使用" class="headerlink" title="变量使用"></a>变量使用</h3><p>当我们使用Ctrl+空格键调用出Content Assitant的时候，通常会展示出该方法或者该关键字的使用方法。如图：</p>
+<p><img src="/robot-framework-2/14.png" alt="connect"></p>
+<p>此时关键字中有两个参数：name,*args。此时name就代表可以传参类型是Scalar类型的参数，*args代表的是可以传递List变量。因此由此可以见得：带*号是指可以传递List类型参数</p>
+<p>List元素值的获取方式一般有两种，正常的获取方式是：@{变量名}[index],index就是索引值<br>另外一种：${变量名[index]}，里面的index也是索引值，如果说是多维list，如果说取单个元素就一个[],如果要取多维的话，有几维就几个[]。<br>1.一维List</p>
+<table>
+<thead>
+<tr>
+<th>@{userList}</th>
+<th>Create List</th>
+<th>a</th>
+<th>b</th>
+<th>c</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>log</td>
+<td>@{userList}[1]</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>log</td>
+<td>${userList[1]}</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>运行结果如图：</p>
+<p><img src="/robot-framework-2/15.png" alt="connect"></p>
+<p>2.多维List<br>@{listA} | Create List | 1 | 2 | |<br>—|—| —| —|—|–<br>@{listB} | Create List | 3 | 4<br>@{listC} | Create List | ${listA}| $listB| 5<br>log| @{listC[1]}[1] </p>
+<p>运行结果如图：</p>
+<p><img src="/robot-framework-2/16.png" alt="connect"></p>
+
       
     </div>
     
@@ -323,8 +465,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/hello-world/" rel="next" title="Hello World">
-                <i class="fa fa-chevron-left"></i> Hello World
+              <a href="/robotframework/" rel="next" title="robotframework（一）">
+                <i class="fa fa-chevron-left"></i> robotframework（一）
               </a>
             
           </div>
@@ -332,10 +474,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/my-firt-article/" rel="prev" title="我的第一篇文章">
-                我的第一篇文章 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -390,8 +528,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -433,6 +580,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#robotframework-变量的使用"><span class="nav-number">1.</span> <span class="nav-text">robotframework 变量的使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#List变量的使用"><span class="nav-number">2.</span> <span class="nav-text">List变量的使用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#List变量赋值"><span class="nav-number">2.1.</span> <span class="nav-text">List变量赋值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#变量使用"><span class="nav-number">2.2.</span> <span class="nav-text">变量使用</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
