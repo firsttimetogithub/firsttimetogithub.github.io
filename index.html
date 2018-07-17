@@ -316,6 +316,9 @@
 <tbody>
 <tr>
 <td></td>
+<td></td>
+<td></td>
+<td></td>
 </tr>
 </tbody>
 </table>
@@ -332,6 +335,7 @@
 <tbody>
 <tr>
 <td></td>
+<td></td>
 </tr>
 </tbody>
 </table>
@@ -341,14 +345,13 @@
 <thead>
 <tr>
 <th>log</th>
-<th>${val2[2]}</th>
+<th>${val2[2]}  </th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>log</td>
-<td>${val[0:3]</td>
-<td></td>
+<td>${val[0:3]  </td>
 </tr>
 </tbody>
 </table>
@@ -395,7 +398,27 @@
 <p><img src="/robot-framework-2/12.png" alt="connect"></p>
 <hr>
 <h2 id="List变量的使用"><a href="#List变量的使用" class="headerlink" title="List变量的使用"></a>List变量的使用</h2><hr>
-<h3 id="List变量赋值"><a href="#List变量赋值" class="headerlink" title="List变量赋值"></a>List变量赋值</h3><p>List和Scalar类似都可以使用Set Variable来赋值，但是如果使用了Set Variable来赋值的话，会使得把一个List变量或者多个Scalar变量形成的List转换给一个Scalar变量。因此如果你想得到一个真正的List变量。更多的推荐使用：Create List来创建<br>例如：<br>  @{val3} | Set Variable | 1 | 2 | 3<br> —|—|—|—|—<br>  @{listVal3} | Create List | 3 | 2 | 1 </p>
+<h3 id="List变量赋值"><a href="#List变量赋值" class="headerlink" title="List变量赋值"></a>List变量赋值</h3><p>List和Scalar类似都可以使用Set Variable来赋值，但是如果使用了Set Variable来赋值的话，会使得把一个List变量或者多个Scalar变量形成的List转换给一个Scalar变量。因此如果你想得到一个真正的List变量。更多的推荐使用：Create List来创建<br>例如：</p>
+<table>
+<thead>
+<tr>
+<th>@{val3}</th>
+<th>Set Variable</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>@{listVal3}</td>
+<td>Create List</td>
+<td>3</td>
+<td>2</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
 <p>结果如图所示：</p>
 <p><img src="/robot-framework-2/13.png" alt="connect"></p>
 <hr>
@@ -432,7 +455,41 @@
 </table>
 <p>运行结果如图：</p>
 <p><img src="/robot-framework-2/15.png" alt="connect"></p>
-<p>2.多维List<br>@{listA} | Create List | 1 | 2 | |<br>—|—| —| —|—|–<br>@{listB} | Create List | 3 | 4<br>@{listC} | Create List | ${listA}| $listB| 5<br>log| @{listC[1]}[1] </p>
+<p>2.多维List</p>
+<table>
+<thead>
+<tr>
+<th>@{listA}</th>
+<th>Create List</th>
+<th>1</th>
+<th>2</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>@{listB}</td>
+<td>Create List</td>
+<td>3</td>
+<td>4</td>
+<td></td>
+</tr>
+<tr>
+<td>@{listC}</td>
+<td>Create List</td>
+<td>${listA}</td>
+<td>$listB</td>
+<td>5</td>
+</tr>
+<tr>
+<td>log</td>
+<td>@{listC[1]}[1]</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
 <p>运行结果如图：</p>
 <p><img src="/robot-framework-2/16.png" alt="connect"></p>
 
