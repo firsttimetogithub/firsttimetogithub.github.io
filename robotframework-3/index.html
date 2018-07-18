@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="ZH-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="RobotFramework+AutoItLibrary文件上传安装AutoLibrary1、进入CMD命令窗口1pip list # 查看列表中是否包含了pywin32如果有则跳过步骤 2 2、没有pywin32的情况下进入python安装文件执行CMD命令1pip install pywin32   # 安装pywin32 3、下载AutoItLibrary（http://code.googl">
+<meta property="og:type" content="article">
+<meta property="og:title" content="RobotFramework+AutoItLibrary文件上传">
+<meta property="og:url" content="https://firsttimetogithub.github.io/robotframework-3/index.html">
+<meta property="og:site_name" content="crystal&#39;s Blog">
+<meta property="og:description" content="RobotFramework+AutoItLibrary文件上传安装AutoLibrary1、进入CMD命令窗口1pip list # 查看列表中是否包含了pywin32如果有则跳过步骤 2 2、没有pywin32的情况下进入python安装文件执行CMD命令1pip install pywin32   # 安装pywin32 3、下载AutoItLibrary（http://code.googl">
+<meta property="og:locale" content="ZH-Hans">
+<meta property="og:image" content="https://firsttimetogithub.github.io/robotframework-3/1.png">
+<meta property="og:image" content="https://firsttimetogithub.github.io/robotframework-3/2.png">
+<meta property="og:image" content="https://firsttimetogithub.github.io/robotframework-3/3.png">
+<meta property="og:image" content="https://firsttimetogithub.github.io/robotframework-3/4.png">
+<meta property="og:image" content="https://firsttimetogithub.github.io/robotframework-3/5.png">
+<meta property="og:image" content="https://firsttimetogithub.github.io/robotframework-3/6.png">
+<meta property="og:image" content="https://firsttimetogithub.github.io/robotframework-3/7.png">
+<meta property="og:image" content="https://firsttimetogithub.github.io/robotframework-3/8.png">
+<meta property="og:updated_time" content="2018-07-18T07:47:22.020Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="RobotFramework+AutoItLibrary文件上传">
+<meta name="twitter:description" content="RobotFramework+AutoItLibrary文件上传安装AutoLibrary1、进入CMD命令窗口1pip list # 查看列表中是否包含了pywin32如果有则跳过步骤 2 2、没有pywin32的情况下进入python安装文件执行CMD命令1pip install pywin32   # 安装pywin32 3、下载AutoItLibrary（http://code.googl">
+<meta name="twitter:image" content="https://firsttimetogithub.github.io/robotframework-3/1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://firsttimetogithub.github.io/robotframework-3/"/>
+
+
+
+
+
+  <title>RobotFramework+AutoItLibrary文件上传 | crystal's Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="ZH-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">crystal's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">生活、技术个人博客</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://firsttimetogithub.github.io/robotframework-3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Crystal_Girl">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="crystal's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">RobotFramework+AutoItLibrary文件上传</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-07-18T11:13:03+08:00">
+                2018-07-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="RobotFramework-AutoItLibrary文件上传"><a href="#RobotFramework-AutoItLibrary文件上传" class="headerlink" title="RobotFramework+AutoItLibrary文件上传"></a>RobotFramework+AutoItLibrary文件上传</h2><h3 id="安装AutoLibrary"><a href="#安装AutoLibrary" class="headerlink" title="安装AutoLibrary"></a>安装AutoLibrary</h3><p>1、进入CMD命令窗口<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip list # 查看列表中是否包含了pywin32如果有则跳过步骤 2</span><br></pre></td></tr></table></figure></p>
+<p>2、没有pywin32的情况下进入python安装文件执行CMD命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install pywin32   # 安装pywin32</span><br></pre></td></tr></table></figure></p>
+<p>3、下载AutoItLibrary（<a href="http://code.google.com/p/robotframework-autoitlibrary/）" target="_blank" rel="noopener">http://code.google.com/p/robotframework-autoitlibrary/）</a><br>下载完成之后解压<br>4、以管理员身份运行CMD命令窗口、切换路径到之前下载解压AutoItLibrary文件下<br>输入命令：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python setup.py install</span><br></pre></td></tr></table></figure></p>
+<p><img src="/robotframework-3/1.png" alt="connect"></p>
+<p>显示上面的图片未提示报错信息则安装AutoItLibrary成功<br>5、将AutoLibrary导入到RobotFramework中</p>
+<p><img src="/robotframework-3/2.png" alt="connect"></p>
+<p>未显示红色字体则AutoItLibrary导入成功</p>
+<p>6、安装好了AutoItLibrary打开它会出现如图的一个控件：</p>
+<p><img src="/robotframework-3/3.png" alt="connect"></p>
+<hr>
+<h3 id="使用AutoItLibrary"><a href="#使用AutoItLibrary" class="headerlink" title="使用AutoItLibrary"></a>使用AutoItLibrary</h3><p>1、在文件解压包中找到AutoInfo.exe、双击运行</p>
+<p><img src="/robotframework-3/4.png" alt="connect"><br>2、你会在Finder Tool位置发信啊有个十字星，可以用鼠标拖动到你需要识别的对象上。如图：</p>
+<p><img src="/robotframework-3/5.png" alt="connect"></p>
+<p>3、获取文件名和确定按钮对象的位置如图：</p>
+<p><img src="/robotframework-3/6.png" alt="connect"></p>
+<hr>
+<h3 id="使用结合Selenium2Library处理上传"><a href="#使用结合Selenium2Library处理上传" class="headerlink" title="使用结合Selenium2Library处理上传"></a>使用结合Selenium2Library处理上传</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">*** Settings ***</span><br><span class="line">Library           Selenium2Library</span><br><span class="line">Library           AutoItLibrary</span><br><span class="line"></span><br><span class="line">*** Variables ***</span><br><span class="line">$&#123;ip&#125;             http://ehrtest.source3g.com/auth/#/login?26f06007489445319dad4265836b66be    # 登录EHR系统的IP地址</span><br><span class="line">$&#123;user&#125;           zhangyue    # 登录EHR的用户名</span><br><span class="line">$&#123;pwd&#125;            888888    # 登录EHR系统的密码</span><br><span class="line"></span><br><span class="line">*** Test Cases ***</span><br><span class="line">fileup</span><br><span class="line">    Open Browser    $&#123;ip&#125;    firefox</span><br><span class="line">    Input Text    xpath=//*[@id=&quot;app&quot;]/div/div[2]/form/div[1]/div/div/input    $&#123;user&#125;</span><br><span class="line">    Input Text    xpath=//*[@id=&quot;app&quot;]/div/div[2]/form/div[2]/div/div/input    $&#123;pwd&#125;</span><br><span class="line">    Click Button    xpath=.//*[@id=&apos;app&apos;]/div/div[2]/form/div[3]/button</span><br><span class="line">    Wait Until Page Contains Element    xpath=//div[@id=&apos;app&apos;]/div/div[2]/ul/li[5]/div/i[2]    20    ERROR</span><br><span class="line">    Click Element    xpath=//div[@id=&apos;app&apos;]/div/div[2]/ul/li[5]/div/i[2]</span><br><span class="line">    Wait Until Page Contains Element    xpath=//div[@id=&apos;app&apos;]/div/div[2]/ul/li[5]/ul/li[3]    20    ERROR</span><br><span class="line">    Click Element    xpath=//div[@id=&apos;app&apos;]/div/div[2]/ul/li[5]/ul/li[3]</span><br><span class="line">    Wait Until Page Contains Element    xpath=//div[@id=&apos;app&apos;]/div/div[3]/div/div[2]/div/div/div    20    ERROR</span><br><span class="line">    Click Element    xpath=//div[@id=&apos;app&apos;]/div/div[3]/div/div[2]/div/div/div</span><br><span class="line">    Control Send    文件上传    $&#123;EMPTY&#125;    [CLASS:Edit; INSTANCE:1]    111.xlsx</span><br><span class="line">    Sleep    2</span><br><span class="line">    Control Click    文件上传    $&#123;EMPTY&#125;    Button1</span><br><span class="line">    Sleep    3</span><br><span class="line">    Page Should Not Contain Element    css=.el-message__content    文件上传失败    INFO</span><br></pre></td></tr></table></figure>
+<p><img src="/robotframework-3/7.png" alt="connect"></p>
+<p>代码思路：</p>
+<p>1、选通过Selenium2Library打开浏览器、并且获取到上传文件控件的xpath路径。（第一行到第十行）</p>
+<p>2、通过 AutoItLibrary获取window窗口中的对象的位置（第十一行和第十三行）主要是获取文件选择对话框中的输入文件名的输入框和“确定”按钮</p>
+<p>3、获取windows对象属性（Summary标签下的（ClassNN或者Advanced(Class)））后面的值<br><img src="/robotframework-3/8.png" alt="connect"></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/robot-framework-2/" rel="next" title="robotframework（二）">
+                <i class="fa fa-chevron-left"></i> robotframework（二）
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  <p>热评文章</p>
+  <div class="ds-top-threads" data-range="weekly" data-num-items="4"></div>
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Crystal_Girl</p>
+              <p class="site-description motion-element" itemprop="description">思考中....</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#RobotFramework-AutoItLibrary文件上传"><span class="nav-number">1.</span> <span class="nav-text">RobotFramework+AutoItLibrary文件上传</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装AutoLibrary"><span class="nav-number">1.1.</span> <span class="nav-text">安装AutoLibrary</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用AutoItLibrary"><span class="nav-number">1.2.</span> <span class="nav-text">使用AutoItLibrary</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用结合Selenium2Library处理上传"><span class="nav-number">1.3.</span> <span class="nav-text">使用结合Selenium2Library处理上传</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Crystal_Girl</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

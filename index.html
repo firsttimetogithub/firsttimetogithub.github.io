@@ -232,6 +232,147 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://firsttimetogithub.github.io/robotframework-3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Crystal_Girl">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="crystal's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/robotframework-3/" itemprop="url">RobotFramework+AutoItLibrary文件上传</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-07-18T11:13:03+08:00">
+                2018-07-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="RobotFramework-AutoItLibrary文件上传"><a href="#RobotFramework-AutoItLibrary文件上传" class="headerlink" title="RobotFramework+AutoItLibrary文件上传"></a>RobotFramework+AutoItLibrary文件上传</h2><h3 id="安装AutoLibrary"><a href="#安装AutoLibrary" class="headerlink" title="安装AutoLibrary"></a>安装AutoLibrary</h3><p>1、进入CMD命令窗口<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip list # 查看列表中是否包含了pywin32如果有则跳过步骤 2</span><br></pre></td></tr></table></figure></p>
+<p>2、没有pywin32的情况下进入python安装文件执行CMD命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install pywin32   # 安装pywin32</span><br></pre></td></tr></table></figure></p>
+<p>3、下载AutoItLibrary（<a href="http://code.google.com/p/robotframework-autoitlibrary/）" target="_blank" rel="noopener">http://code.google.com/p/robotframework-autoitlibrary/）</a><br>下载完成之后解压<br>4、以管理员身份运行CMD命令窗口、切换路径到之前下载解压AutoItLibrary文件下<br>输入命令：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python setup.py install</span><br></pre></td></tr></table></figure></p>
+<p><img src="/robotframework-3/1.png" alt="connect"></p>
+<p>显示上面的图片未提示报错信息则安装AutoItLibrary成功<br>5、将AutoLibrary导入到RobotFramework中</p>
+<p><img src="/robotframework-3/2.png" alt="connect"></p>
+<p>未显示红色字体则AutoItLibrary导入成功</p>
+<p>6、安装好了AutoItLibrary打开它会出现如图的一个控件：</p>
+<p><img src="/robotframework-3/3.png" alt="connect"></p>
+<hr>
+<h3 id="使用AutoItLibrary"><a href="#使用AutoItLibrary" class="headerlink" title="使用AutoItLibrary"></a>使用AutoItLibrary</h3><p>1、在文件解压包中找到AutoInfo.exe、双击运行</p>
+<p><img src="/robotframework-3/4.png" alt="connect"><br>2、你会在Finder Tool位置发信啊有个十字星，可以用鼠标拖动到你需要识别的对象上。如图：</p>
+<p><img src="/robotframework-3/5.png" alt="connect"></p>
+<p>3、获取文件名和确定按钮对象的位置如图：</p>
+<p><img src="/robotframework-3/6.png" alt="connect"></p>
+<hr>
+<h3 id="使用结合Selenium2Library处理上传"><a href="#使用结合Selenium2Library处理上传" class="headerlink" title="使用结合Selenium2Library处理上传"></a>使用结合Selenium2Library处理上传</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">*** Settings ***</span><br><span class="line">Library           Selenium2Library</span><br><span class="line">Library           AutoItLibrary</span><br><span class="line"></span><br><span class="line">*** Variables ***</span><br><span class="line">$&#123;ip&#125;             http://ehrtest.source3g.com/auth/#/login?26f06007489445319dad4265836b66be    # 登录EHR系统的IP地址</span><br><span class="line">$&#123;user&#125;           zhangyue    # 登录EHR的用户名</span><br><span class="line">$&#123;pwd&#125;            888888    # 登录EHR系统的密码</span><br><span class="line"></span><br><span class="line">*** Test Cases ***</span><br><span class="line">fileup</span><br><span class="line">    Open Browser    $&#123;ip&#125;    firefox</span><br><span class="line">    Input Text    xpath=//*[@id=&quot;app&quot;]/div/div[2]/form/div[1]/div/div/input    $&#123;user&#125;</span><br><span class="line">    Input Text    xpath=//*[@id=&quot;app&quot;]/div/div[2]/form/div[2]/div/div/input    $&#123;pwd&#125;</span><br><span class="line">    Click Button    xpath=.//*[@id=&apos;app&apos;]/div/div[2]/form/div[3]/button</span><br><span class="line">    Wait Until Page Contains Element    xpath=//div[@id=&apos;app&apos;]/div/div[2]/ul/li[5]/div/i[2]    20    ERROR</span><br><span class="line">    Click Element    xpath=//div[@id=&apos;app&apos;]/div/div[2]/ul/li[5]/div/i[2]</span><br><span class="line">    Wait Until Page Contains Element    xpath=//div[@id=&apos;app&apos;]/div/div[2]/ul/li[5]/ul/li[3]    20    ERROR</span><br><span class="line">    Click Element    xpath=//div[@id=&apos;app&apos;]/div/div[2]/ul/li[5]/ul/li[3]</span><br><span class="line">    Wait Until Page Contains Element    xpath=//div[@id=&apos;app&apos;]/div/div[3]/div/div[2]/div/div/div    20    ERROR</span><br><span class="line">    Click Element    xpath=//div[@id=&apos;app&apos;]/div/div[3]/div/div[2]/div/div/div</span><br><span class="line">    Control Send    文件上传    $&#123;EMPTY&#125;    [CLASS:Edit; INSTANCE:1]    111.xlsx</span><br><span class="line">    Sleep    2</span><br><span class="line">    Control Click    文件上传    $&#123;EMPTY&#125;    Button1</span><br><span class="line">    Sleep    3</span><br><span class="line">    Page Should Not Contain Element    css=.el-message__content    文件上传失败    INFO</span><br></pre></td></tr></table></figure>
+<p><img src="/robotframework-3/7.png" alt="connect"></p>
+<p>代码思路：</p>
+<p>1、选通过Selenium2Library打开浏览器、并且获取到上传文件控件的xpath路径。（第一行到第十行）</p>
+<p>2、通过 AutoItLibrary获取window窗口中的对象的位置（第十一行和第十三行）主要是获取文件选择对话框中的输入文件名的输入框和“确定”按钮</p>
+<p>3、获取windows对象属性（Summary标签下的（ClassNN或者Advanced(Class)））后面的值<br><img src="/robotframework-3/8.png" alt="connect"></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://firsttimetogithub.github.io/robot-framework-2/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1024,134 +1165,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://firsttimetogithub.github.io/mobile-API-Test/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Crystal_Girl">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="crystal's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/mobile-API-Test/" itemprop="url">移动端抓包</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-16T18:04:51+08:00">
-                2018-05-16
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="Jmeter抓包"><a href="#Jmeter抓包" class="headerlink" title="Jmeter抓包"></a>Jmeter抓包</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">点击测试计划右击新增“线程组”</span><br><span class="line">右击“线程组”新增“HTTP请求默认值”</span><br><span class="line">修改“服务器名称或IP”为本机IP（如：192.168.100.243）</span><br><span class="line">修改“端口号为”为：8888</span><br></pre></td></tr></table></figure>
-<h6 id=""><a href="#" class="headerlink" title=""></a><img src="/Airtest-IDE-Study/7.png" alt="Jmeter"></h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">选择工作台&gt;新增“HTTP代理服务器”</span><br><span class="line">修改“目标控制器”，更改为:测试计划&gt;线程组</span><br><span class="line">一般情况下默认的端口号是：8888（这里可以改，如果有端口冲突的话）</span><br></pre></td></tr></table></figure>
-<h6 id="-1"><a href="#-1" class="headerlink" title=""></a><img src="/Airtest-IDE-Study/8.png" alt="Jmeter"></h6><h2 id="手机设置"><a href="#手机设置" class="headerlink" title="手机设置"></a>手机设置</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">在手机中设置手动代理为HTTP请求默认值的IP</span><br><span class="line">端口为HTTP代理服务器端口号:168.192.100.243</span><br></pre></td></tr></table></figure>
-<h6 id="-2"><a href="#-2" class="headerlink" title=""></a><img src="/Airtest-IDE-Study/1.jpg" alt="Jmeter"></h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">配置好之后，进入“HTTP代理服务器”中点击底部“启动按钮”</span><br><span class="line">点击手机上的应用，此时就会有调用的包出现在“线程组”中</span><br></pre></td></tr></table></figure>
-<h6 id="-3"><a href="#-3" class="headerlink" title=""></a><img src="/Airtest-IDE-Study/12.png" alt="Jmeter"></h6><hr>
-<h2 id="charles抓包"><a href="#charles抓包" class="headerlink" title="charles抓包"></a>charles抓包</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">选择“proxy”</span><br><span class="line">点击“proxy setting”</span><br><span class="line">进入proxy setting 页面</span><br><span class="line">在端口处填写端口号（默认为8888，可以更改）</span><br></pre></td></tr></table></figure>
-<h6 id="-4"><a href="#-4" class="headerlink" title=""></a><img src="/Airtest-IDE-Study/10.png" alt="Jmeter"></h6><h2 id="手机设置-1"><a href="#手机设置-1" class="headerlink" title="手机设置"></a>手机设置</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">在手机中设置手动代理为HTTP请求默认值的IP:168.192.100.243</span><br><span class="line">端口为HTTP代理服务器端口号:8888</span><br></pre></td></tr></table></figure>
-<h6 id="-5"><a href="#-5" class="headerlink" title=""></a><img src="/Airtest-IDE-Study/1.jpg" alt="Jmeter"></h6><hr>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">链接成功之后，点击手机上的应用在“structure”上就会显示该应用的服务器地址端口号下所调用的包</span><br><span class="line">如果你觉得太多接口出现的话可以选择你想查看的包，右击鼠标选择“focus”</span><br><span class="line">此时就会把分成你想看到的接口和“Other Hosts”</span><br></pre></td></tr></table></figure>
-<h6 id="-6"><a href="#-6" class="headerlink" title=""></a><img src="/Airtest-IDE-Study/11.png" alt="Jmeter"></h6>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1202,7 +1215,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">12</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
