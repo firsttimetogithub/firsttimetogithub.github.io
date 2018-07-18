@@ -97,7 +97,7 @@
 <meta property="og:image" content="https://firsttimetogithub.github.io/robot-framework-2/16.png">
 <meta property="og:image" content="https://firsttimetogithub.github.io/robot-framework-2/17.png">
 <meta property="og:image" content="https://firsttimetogithub.github.io/robot-framework-2/18.png">
-<meta property="og:updated_time" content="2018-07-18T09:06:35.805Z">
+<meta property="og:updated_time" content="2018-07-18T09:10:21.284Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="robotframework（二）">
 <meta name="twitter:description" content="robotframework 变量的使用1、在判断中使用例如：Set Variable If就是一个典型的例子。再例如下面的:    Run Keywork If ‘${val2}==’abcd’ log efgh            这个例子表示：如果说${val2}和abcd字符串相等，那么就运行log后面的关键字，打印efgh运行结果如下：  2、字符串使用简单的一种方法就是字符串的链接，">
@@ -521,7 +521,25 @@
 </table>
 <p>运行结果：</p>
 <p><img src="/robot-framework-2/17.png" alt="connect"></p>
-<p>2、Scalar变量转换成List<br>${list1} | Create List | abcd | EFGH<br>—|—|—|—<br>log | =@{list1}= | |</p>
+<p>2、Scalar变量转换成List</p>
+<table>
+<thead>
+<tr>
+<th>${list1}</th>
+<th>Create List</th>
+<th>abcd</th>
+<th>EFGH</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>log</td>
+<td>=@{list1}=</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
 <p>运行结果：</p>
 <p><img src="/robot-framework-2/18.png" alt="connect"></p>
 <p>3、转换限制</p>
