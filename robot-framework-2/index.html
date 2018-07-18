@@ -95,7 +95,9 @@
 <meta property="og:image" content="https://firsttimetogithub.github.io/robot-framework-2/14.png">
 <meta property="og:image" content="https://firsttimetogithub.github.io/robot-framework-2/15.png">
 <meta property="og:image" content="https://firsttimetogithub.github.io/robot-framework-2/16.png">
-<meta property="og:updated_time" content="2018-07-17T01:48:10.242Z">
+<meta property="og:image" content="https://firsttimetogithub.github.io/robot-framework-2/17.png">
+<meta property="og:image" content="https://firsttimetogithub.github.io/robot-framework-2/18.png">
+<meta property="og:updated_time" content="2018-07-18T09:06:35.805Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="robotframework（二）">
 <meta name="twitter:description" content="robotframework 变量的使用1、在判断中使用例如：Set Variable If就是一个典型的例子。再例如下面的:    Run Keywork If ‘${val2}==’abcd’ log efgh            这个例子表示：如果说${val2}和abcd字符串相等，那么就运行log后面的关键字，打印efgh运行结果如下：  2、字符串使用简单的一种方法就是字符串的链接，">
@@ -498,6 +500,35 @@
 </table>
 <p>运行结果如图：</p>
 <p><img src="/robot-framework-2/16.png" alt="connect"></p>
+<h3 id="变量转换"><a href="#变量转换" class="headerlink" title="变量转换"></a>变量转换</h3><p>1、List转换成Scalar</p>
+<table>
+<thead>
+<tr>
+<th>@{list1}</th>
+<th>Create List</th>
+<th>abcd</th>
+<th>EFGH</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>log</td>
+<td>${list1}</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>运行结果：</p>
+<p><img src="/robot-framework-2/17.png" alt="connect"></p>
+<p>2、Scalar变量转换成List<br>${list1} | Create List | abcd | EFGH<br>—|—|—|—<br>log | =@{list1}= | |</p>
+<p>运行结果：</p>
+<p><img src="/robot-framework-2/18.png" alt="connect"></p>
+<p>3、转换限制</p>
+<p>注意在对变量类型进行转换过程中如果说目标变量没有进行初始化过或者赋值过，那么就可以进行类型转换，但是如果目标变量已经初始化或者赋值那么就无法进行变量的类型转换。</p>
+<p>4、Dictionary变量<br>Dictionary变量每一个元素都是以Key、Value形式存放。比如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;key1:val1,key2:val2&#125; # 其中一个key对应一个value。key不能重复出现</span><br></pre></td></tr></table></figure></p>
+<p>5、对象变量</p>
+<p>对象变量是在接口测试中Request测试库中出现。例如${return}是接口返回的对象。一般我们是获取该对象中某个属性值。例如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$&#123;return.STATUS&#125; # 获取return对象中的返回状态值</span><br><span class="line">$&#123;return.CONTENT&#125; # 获取对象内容</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -651,7 +682,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#robotframework-变量的使用"><span class="nav-number">1.</span> <span class="nav-text">robotframework 变量的使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#List变量的使用"><span class="nav-number">2.</span> <span class="nav-text">List变量的使用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#List变量赋值"><span class="nav-number">2.1.</span> <span class="nav-text">List变量赋值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#变量使用"><span class="nav-number">2.2.</span> <span class="nav-text">变量使用</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#robotframework-变量的使用"><span class="nav-number">1.</span> <span class="nav-text">robotframework 变量的使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#List变量的使用"><span class="nav-number">2.</span> <span class="nav-text">List变量的使用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#List变量赋值"><span class="nav-number">2.1.</span> <span class="nav-text">List变量赋值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#变量使用"><span class="nav-number">2.2.</span> <span class="nav-text">变量使用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#变量转换"><span class="nav-number">2.3.</span> <span class="nav-text">变量转换</span></a></li></ol></li></ol></div>
             
 
           </div>
