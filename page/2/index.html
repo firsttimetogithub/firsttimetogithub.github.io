@@ -232,6 +232,133 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://firsttimetogithub.github.io/Jmeter/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Crystal_Girl">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="crystal's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/Jmeter/" itemprop="url">jmeter接口参数化</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-06-14T16:30:44+08:00">
+                2018-06-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="1-Jmeter参数化之用户变量"><a href="#1-Jmeter参数化之用户变量" class="headerlink" title="1. Jmeter参数化之用户变量"></a>1. Jmeter参数化之用户变量</h2><h6 id="在测试计划里面添加一个用户自定义的变量，变量名：uid，变量值：GS0044"><a href="#在测试计划里面添加一个用户自定义的变量，变量名：uid，变量值：GS0044" class="headerlink" title="在测试计划里面添加一个用户自定义的变量，变量名：uid，变量值：GS0044"></a>在测试计划里面添加一个用户自定义的变量，变量名：uid，变量值：GS0044</h6><p><img src="/Jmeter/1.png" alt="connect"><br><img src="/Jmeter/2.png" alt="connect"></p>
+<hr>
+<h2 id="2-Jmeter参数化之函数读取数据"><a href="#2-Jmeter参数化之函数读取数据" class="headerlink" title="2. Jmeter参数化之函数读取数据 　"></a>2. Jmeter参数化之函数读取数据 　</h2><h6 id="随便选取了几个函数作为实例，函数具体参数和百度查询"><a href="#随便选取了几个函数作为实例，函数具体参数和百度查询" class="headerlink" title="随便选取了几个函数作为实例，函数具体参数和百度查询"></a>随便选取了几个函数作为实例，函数具体参数和百度查询</h6><h6 id="Random：生成随机数"><a href="#Random：生成随机数" class="headerlink" title="　　__Random：生成随机数"></a>　　__Random：生成随机数</h6><h6 id="RandomString：生成随机字符串"><a href="#RandomString：生成随机字符串" class="headerlink" title="　　__RandomString：生成随机字符串"></a>　　__RandomString：生成随机字符串</h6><h6 id="time：获取当前时间"><a href="#time：获取当前时间" class="headerlink" title="　　__time：获取当前时间"></a>　　__time：获取当前时间</h6><h6 id="UUID：生成唯一UID"><a href="#UUID：生成唯一UID" class="headerlink" title="　　__UUID：生成唯一UID"></a>　　__UUID：生成唯一UID</h6><h6 id="threadNum：线程ID"><a href="#threadNum：线程ID" class="headerlink" title="　　__threadNum：线程ID"></a>　　__threadNum：线程ID</h6><h6 id="CSVRead：从文件中读取一列"><a href="#CSVRead：从文件中读取一列" class="headerlink" title="　　__CSVRead：从文件中读取一列"></a>　　__CSVRead：从文件中读取一列</h6><h6 id="StringFromFile：从文件中读取一行"><a href="#StringFromFile：从文件中读取一行" class="headerlink" title="　　_StringFromFile：从文件中读取一行"></a>　　_StringFromFile：从文件中读取一行</h6><p><img src="/Jmeter/3.png" alt="connect"><br><img src="/Jmeter/4.png" alt="connect"><br><img src="/Jmeter/5.png" alt="connect"></p>
+<hr>
+<h2 id="3-Jmeter参数化之从文件中读取数据"><a href="#3-Jmeter参数化之从文件中读取数据" class="headerlink" title="3.Jmeter参数化之从文件中读取数据"></a>3.Jmeter参数化之从文件中读取数据</h2><h6 id="添加一个CSV-Data-Set-Config-配置元件"><a href="#添加一个CSV-Data-Set-Config-配置元件" class="headerlink" title="添加一个CSV Data Set Config 配置元件"></a>添加一个CSV Data Set Config 配置元件</h6><p><img src="/Jmeter/6.png" alt="connect"></p>
+<h6 id="data-txt文件内容如下："><a href="#data-txt文件内容如下：" class="headerlink" title="data.txt文件内容如下："></a>data.txt文件内容如下：</h6><p><img src="/Jmeter/7.png" alt="connect"><br><img src="/Jmeter/8.png" alt="connect"></p>
+<hr>
+<h2 id="4-Jmeter参数化之从数据库读取数据"><a href="#4-Jmeter参数化之从数据库读取数据" class="headerlink" title="4.Jmeter参数化之从数据库读取数据"></a>4.Jmeter参数化之从数据库读取数据</h2><h6 id="可以从数据读取数据，进行参数操作；也通过jdbc进行造测试数据"><a href="#可以从数据读取数据，进行参数操作；也通过jdbc进行造测试数据" class="headerlink" title="可以从数据读取数据，进行参数操作；也通过jdbc进行造测试数据"></a>可以从数据读取数据，进行参数操作；也通过jdbc进行造测试数据</h6><h6 id="注意：一定要在测试计划中上传mysql驱动"><a href="#注意：一定要在测试计划中上传mysql驱动" class="headerlink" title="==注意：一定要在测试计划中上传mysql驱动=="></a>==注意：一定要在测试计划中上传mysql驱动==</h6><p><img src="/Jmeter/9.png" alt="connect"><br><img src="/Jmeter/10.png" alt="connect"><br><img src="/Jmeter/11.png" alt="connect"><br><img src="/Jmeter/11.png" alt="connect"></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://firsttimetogithub.github.io/mobile-API-Test/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -767,134 +894,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://firsttimetogithub.github.io/my-firt-article/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Crystal_Girl">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="crystal's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/my-firt-article/" itemprop="url">我的第一篇文章</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-03T14:57:13+08:00">
-                2018-05-03
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="新建一个post"><a href="#新建一个post" class="headerlink" title="新建一个post"></a>新建一个post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="运行"><a href="#运行" class="headerlink" title="运行"></a>运行</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -945,7 +944,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">13</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
