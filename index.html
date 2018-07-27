@@ -251,7 +251,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/robotframework-5/" itemprop="url">robotframework-5</a></h1>
+                <a class="post-title-link" href="/robotframework-5/" itemprop="url">Robot Framework持续集成到Jenkins</a></h1>
         
 
         <div class="post-meta">
@@ -303,7 +303,37 @@
       
         
           
-            
+            <h2 id="Robot-Framework集成到Jenkins"><a href="#Robot-Framework集成到Jenkins" class="headerlink" title="Robot Framework集成到Jenkins"></a>Robot Framework集成到Jenkins</h2><h3 id="安装Jenkins的robot-framework插件"><a href="#安装Jenkins的robot-framework插件" class="headerlink" title="安装Jenkins的robot framework插件"></a>安装Jenkins的robot framework插件</h3><p>进入Jenkins-&gt;系统管理-&gt;插件管理-&gt;找到’robot framework plugin</p>
+<p><img src="/robotframework-5/1.png" alt="connect"></p>
+<h3 id="新建任务"><a href="#新建任务" class="headerlink" title="新建任务"></a>新建任务</h3><p><img src="/robotframework-5/2.png" alt="connect"></p>
+<p><img src="/robotframework-5/3.png" alt="connect"></p>
+<h3 id="配置构建"><a href="#配置构建" class="headerlink" title="配置构建"></a>配置构建</h3><p>进入EHR_Test-&gt;配置-&gt;构建</p>
+<p><img src="/robotframework-5/4.png" alt="connect"><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pybot.bat --argumentfile c:\users\administrator\appdata\local\temp\RIDEc9tgmz.d\argfile.txt --listener C:\Python27\lib\site-packages\robotide\contrib\testrunner\TestRunnerAgent.py:51679:False D:\python\robotframework\TestProject\Test\EHR</span><br></pre></td></tr></table></figure></p>
+<p>注意：这里的command命令是复制RIDE控制台里面的如图：</p>
+<p><img src="/robotframework-5/5.png" alt="connect"></p>
+<p>如果这里的代码无法运行报错，请输入call &gt;&gt;例如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">call pybot.bat D:\python\robotframework\TestProject\Test\EHR</span><br><span class="line">exit 0</span><br></pre></td></tr></table></figure></p>
+<p><img src="/robotframework-5/14.png" alt="connect"></p>
+<h3 id="构建后的操作"><a href="#构建后的操作" class="headerlink" title="构建后的操作"></a>构建后的操作</h3><p>选择“Publish Robot Framework test results” </p>
+<p><img src="/robotframework-5/6.png" alt="connect"></p>
+<p>注意这里的输出report报告地址是来自于RIDE控制台中的输出报告位置复制过来</p>
+<p>设置邮件报告：<br>1、选择Editable Email Notification</p>
+<p><img src="/robotframework-5/7.png" alt="connect"></p>
+<p>2、default content代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;hr/&gt;</span><br><span class="line"></span><br><span class="line">(本邮件是程序自动下发的，请勿回复！)&lt;br/&gt;&lt;hr/&gt;</span><br><span class="line"></span><br><span class="line">项目名称：$PROJECT_NAME&lt;br/&gt;&lt;hr/&gt;</span><br><span class="line"></span><br><span class="line">构建编号：$BUILD_NUMBER&lt;br/&gt;&lt;hr/&gt;</span><br><span class="line"></span><br><span class="line">构建状态：$BUILD_STATUS&lt;br/&gt;&lt;hr/&gt;</span><br><span class="line"></span><br><span class="line">触发原因：$&#123;CAUSE&#125;&lt;br/&gt;&lt;hr/&gt;</span><br><span class="line"></span><br><span class="line">测试报告：&lt;a href=&quot;http://localhost:8080/job/EHR_Test001/10/robot/report/report.html&quot;&gt;&lt;/a&gt;http://localhost:8080/job/EHR_Test001/10/robot/report/report.html&lt;br/&gt;&lt;hr/&gt;</span><br><span class="line"></span><br><span class="line">变更集:$&#123;JELLY_SCRIPT,template=&quot;html&quot;&#125;&lt;br/&gt;&lt;hr/&gt;</span><br></pre></td></tr></table></figure></p>
+<p>3、添加trigger</p>
+<p><img src="/robotframework-5/8.png" alt="connect"></p>
+<p>4、完成</p>
+<h3 id="在Jenkins设置中节点"><a href="#在Jenkins设置中节点" class="headerlink" title="在Jenkins设置中节点"></a>在Jenkins设置中节点</h3><p>点击“Jenkins”-&gt;系统管理-&gt;节点管理-&gt;master节点<br>勾选“环境变量”</p>
+<p><img src="/robotframework-5/9.png" alt="connect"></p>
+<h3 id="立即构建项目"><a href="#立即构建项目" class="headerlink" title="立即构建项目"></a>立即构建项目</h3><p>设置好环境变量之后回到JOB中点击“立即构建”</p>
+<p><img src="/robotframework-5/10.png" alt="connect"></p>
+<p>构建后的效果如下：</p>
+<p><img src="/robotframework-5/11.png" alt="connect"></p>
+<p>可以点击“openreport.html”查看详细的测试报告，如图：</p>
+<p><img src="/robotframework-5/12.png" alt="connect"></p>
+<p>进入个人邮箱查看邮件，如图：</p>
+<p><img src="/robotframework-5/13.png" alt="connect"></p>
+<p>可以点击上面“测试报告”URL地址查看详细的测试报告信息</p>
+
           
         
       
