@@ -251,7 +251,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/jmeter-1/" itemprop="url">jmeter之正则表达式&JSON Path Extractor</a></h1>
+                <a class="post-title-link" href="/jmeter-1/" itemprop="url">jmeter之参数化</a></h1>
         
 
         <div class="post-meta">
@@ -263,7 +263,7 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-08-13T00:00:00+08:00">
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-08-13T14:36:03+08:00">
                 2018-08-13
               </time>
             
@@ -303,7 +303,7 @@
       
         
           
-            <p>不知道你们在使用jmeter的时候有没有遇到过类似于我这样的问题，就是对于json格式的返回值要取其中某个key的value值，如果用正则表达式取的话就往往会取到空值。或者会把所有的匹配的key写出来。因此为了方便提取可以选择使用JSON Extractor进行提取</p>
+            <h2 id="JMeter—-正则表达式-amp-JSON-Path-Extractor"><a href="#JMeter—-正则表达式-amp-JSON-Path-Extractor" class="headerlink" title="JMeter—-正则表达式&amp;JSON Path Extractor"></a>JMeter—-正则表达式&amp;JSON Path Extractor</h2><p>不知道你们在使用jmeter的时候有没有遇到过类似于我这样的问题，就是对于json格式的返回值要取其中某个key的value值，如果用正则表达式取的话就往往会取到空值。或者会把所有的匹配的key写出来。因此为了方便提取可以选择使用JSON Extractor进行提取</p>
 <p><img src="/jmeter-1/1.png" alt="connect"></p>
 <p>例如：</p>
 <p>请求的接口返回值：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;code&quot;:200,</span><br><span class="line">    &quot;data&quot;:</span><br><span class="line">    &#123;</span><br><span class="line">        &quot;list&quot;:</span><br><span class="line">        [</span><br><span class="line">            &#123;</span><br><span class="line">                &quot;id&quot;:136,</span><br><span class="line">                &quot;insertTime&quot;:&quot;2018-08-13 10:46:23&quot;,</span><br><span class="line">                &quot;item&quot;:</span><br><span class="line">                &#123;</span><br><span class="line">                &#125;,</span><br><span class="line">                &quot;num&quot;:1,</span><br><span class="line">                &quot;priceType&quot;:1,</span><br><span class="line">                &quot;skuId&quot;:43,</span><br><span class="line">                &quot;uid&quot;:&quot;745112018080615551&quot;,</span><br><span class="line">                &quot;updateTime&quot;:&quot;2018-08-13 10:46:23&quot;</span><br><span class="line">            &#125;,</span><br><span class="line">            &#123;</span><br><span class="line">                &quot;id&quot;:101,</span><br><span class="line">                &quot;insertTime&quot;:&quot;2018-08-07 17:27:55&quot;,</span><br><span class="line">                &quot;item&quot;:</span><br><span class="line">                &#123;</span><br><span class="line">                    &quot;canRefund&quot;:0,</span><br><span class="line">                    &quot;courseId&quot;:2,</span><br><span class="line">                    &quot;courseName&quot;:&quot;18328343333 计组&quot;,</span><br><span class="line">                    &quot;icon&quot;:&quot;test/pic/1796308711224902736.jpg&quot;,</span><br><span class="line">                    &quot;orgId&quot;:1,</span><br><span class="line">                    &quot;orgName&quot;:&quot;18328341111 的学校&quot;,</span><br><span class="line">                    &quot;prices&quot;:</span><br><span class="line">                    [</span><br><span class="line">                        &#123;</span><br><span class="line">                            &quot;currency&quot;:1,</span><br><span class="line">                            &quot;gmtCreate&quot;:&quot;2018-08-03 14:08:21&quot;,</span><br><span class="line">                            &quot;gmtUpdate&quot;:&quot;2018-08-03 14:08:21&quot;,</span><br><span class="line">                            &quot;id&quot;:3,</span><br><span class="line">                            &quot;itemId&quot;:2,</span><br><span class="line">                            &quot;marketPrice&quot;:100.20,</span><br><span class="line">                            &quot;orginPrice&quot;:200.20</span><br><span class="line">                        &#125;,</span><br></pre></td></tr></table></figure></p>
@@ -312,7 +312,22 @@
 <p>Variable names : 名称 </p>
 <p>JSONPath Expression：JSON表达式 </p>
 <p>Match Numbers：匹配哪个，可为空即默认第一个 </p>
-<p>Default Value：未取到值的时候默认值<br>使用<code>$.data.id</code>去提取id的值时，发现获取到的数据为空<br>原来这个responses 的data为数组，故应为<code>$.data.list[0].id</code> 提取第list数组中第1个id值</p>
+<p>Default Value：未取到值的时候默认值<br>使用$.data.id 去提取id的值时，发现获取到的数据为空<br>原来这个responses 的data为数组，故应为$.data.list[0].id 提取第list数组中第1个id值</p>
+<hr>
+<h2 id="跨线程组传递变"><a href="#跨线程组传递变" class="headerlink" title="跨线程组传递变"></a>跨线程组传递变</h2><p>使用场景：<br>我们在一个线程组中的一个返回参数只需要获取一次，但是这个返回值需要在其他的线程组中调用。</p>
+<p>解决办法：</p>
+<p>添加一个后置处理器——Beanshell Prerocessor</p>
+<p>1、首先需要在需要获取的参数线程组中添加正则表达式/JSON Extranctor</p>
+<p><img src="/jmeter-1/3.png" alt="connect"></p>
+<p>2、当前线程组中继续添加后置处理器——Beanshell Prerocessor</p>
+<p><img src="/jmeter-1/4.png" alt="connect"></p>
+<p>3、Parameters：引用json表达式提取的变量teacherId</p>
+<p>4、Script：具体beanshell语法大家可去查看相关资料，这里很简单，一条语句就搞定。<br>意思是把获取的变量 ${teacherId}设置为全局变量，并以新的名字newtoken来进行引用。<br>5、在引用的地方引用全局变量：teacherId</p>
+<p><img src="/jmeter-1/5.png" alt="connect"></p>
+<p>引用方式是${__P(teacherId,)}注意花括号中是两个下划线，newtoken后还跟一个逗号，不要写漏了。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	&quot;teacherId&quot;:&quot;$&#123;__P(teacherId,)&#125;&quot;,</span><br><span class="line">	&quot;name&quot;:&quot;$&#123;__P(teachername,)&#125;&quot;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>6、执行查看结果：</p>
+<p><img src="/jmeter-1/6.png" alt="connect"></p>
 
           
         
