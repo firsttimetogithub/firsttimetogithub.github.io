@@ -79,17 +79,20 @@
 
 
 
-<meta name="description" content="Python selenium等待的区别强制等待 sleep()12345import timedriver = webdriver.FirefoxProfile()  driver.get(&amp;apos;http://ehrtest.source3g.com/auth//#/login?ehr&amp;apos;)time.sleep(10) # 强制等待10秒 driver.quit() 优点：简单方便">
+<meta name="description" content="不知道你们在使用jmeter的时候有没有遇到过类似于我这样的问题，就是对于json格式的返回值要取其中某个key的value值，如果用正则表达式取的话就往往会取到空值。或者会把所有的匹配的key写出来。因此为了方便提取可以选择使用JSON Extractor进行提取  例如： 请求的接口返回值：1234567891011121314151617181920212223242526272829303">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Python selenium">
-<meta property="og:url" content="https://firsttimetogithub.github.io/selenium-wait/index.html">
+<meta property="og:title" content="jmeter之正则表达式&amp;JSON Path Extractor">
+<meta property="og:url" content="https://firsttimetogithub.github.io/jmeter-1/index.html">
 <meta property="og:site_name" content="crystal&#39;s Blog">
-<meta property="og:description" content="Python selenium等待的区别强制等待 sleep()12345import timedriver = webdriver.FirefoxProfile()  driver.get(&amp;apos;http://ehrtest.source3g.com/auth//#/login?ehr&amp;apos;)time.sleep(10) # 强制等待10秒 driver.quit() 优点：简单方便">
+<meta property="og:description" content="不知道你们在使用jmeter的时候有没有遇到过类似于我这样的问题，就是对于json格式的返回值要取其中某个key的value值，如果用正则表达式取的话就往往会取到空值。或者会把所有的匹配的key写出来。因此为了方便提取可以选择使用JSON Extractor进行提取  例如： 请求的接口返回值：1234567891011121314151617181920212223242526272829303">
 <meta property="og:locale" content="ZH-Hans">
-<meta property="og:updated_time" content="2018-05-15T03:15:24.014Z">
+<meta property="og:image" content="https://firsttimetogithub.github.io/jmeter-1/1.png">
+<meta property="og:image" content="https://firsttimetogithub.github.io/jmeter-1/2.png">
+<meta property="og:updated_time" content="2018-08-13T07:42:37.919Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Python selenium">
-<meta name="twitter:description" content="Python selenium等待的区别强制等待 sleep()12345import timedriver = webdriver.FirefoxProfile()  driver.get(&amp;apos;http://ehrtest.source3g.com/auth//#/login?ehr&amp;apos;)time.sleep(10) # 强制等待10秒 driver.quit() 优点：简单方便">
+<meta name="twitter:title" content="jmeter之正则表达式&amp;JSON Path Extractor">
+<meta name="twitter:description" content="不知道你们在使用jmeter的时候有没有遇到过类似于我这样的问题，就是对于json格式的返回值要取其中某个key的value值，如果用正则表达式取的话就往往会取到空值。或者会把所有的匹配的key写出来。因此为了方便提取可以选择使用JSON Extractor进行提取  例如： 请求的接口返回值：1234567891011121314151617181920212223242526272829303">
+<meta name="twitter:image" content="https://firsttimetogithub.github.io/jmeter-1/1.png">
 
 
 
@@ -119,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="https://firsttimetogithub.github.io/selenium-wait/"/>
+  <link rel="canonical" href="https://firsttimetogithub.github.io/jmeter-1/"/>
 
 
 
 
 
-  <title>Python selenium | crystal's Blog</title>
+  <title>jmeter之正则表达式&JSON Path Extractor | crystal's Blog</title>
   
 
 
@@ -232,7 +235,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://firsttimetogithub.github.io/selenium-wait/">
+    <link itemprop="mainEntityOfPage" href="https://firsttimetogithub.github.io/jmeter-1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Crystal_Girl">
@@ -249,7 +252,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Python selenium</h1>
+          <h1 class="post-title" itemprop="name headline">jmeter之正则表达式&JSON Path Extractor</h1>
         
 
         <div class="post-meta">
@@ -261,8 +264,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-15T11:12:33+08:00">
-                2018-05-15
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-08-13T00:00:00+08:00">
+                2018-08-13
               </time>
             
 
@@ -299,15 +302,17 @@
       
 
       
-        <h1 id="Python-selenium等待的区别"><a href="#Python-selenium等待的区别" class="headerlink" title="Python selenium等待的区别"></a>Python selenium等待的区别</h1><h2 id="强制等待-sleep"><a href="#强制等待-sleep" class="headerlink" title="强制等待 sleep()"></a>强制等待 sleep()</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">import time</span><br><span class="line">driver = webdriver.FirefoxProfile()  </span><br><span class="line">driver.get(&apos;http://ehrtest.source3g.com/auth//#/login?ehr&apos;)</span><br><span class="line">time.sleep(10) # 强制等待10秒 </span><br><span class="line">driver.quit()</span><br></pre></td></tr></table></figure>
-<p>优点：简单方便.<br>缺点：缺点时不智能，设置的时间太短，<br>元素还没有加载出来，那照样会报错；设置的时间太长，<br>则会浪费时间，不要小瞧每次几秒的时间，case多了，<br>代码量大了，很多个几秒就会影响整体的运行速度了.</p>
-<hr>
-<h2 id="隐性等待-implicitly-wait"><a href="#隐性等待-implicitly-wait" class="headerlink" title="隐性等待 implicitly_wait()"></a>隐性等待 implicitly_wait()</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">from selenium import webdriver</span><br><span class="line">driver = webdriver.FirefoxProfile()  </span><br><span class="line">driver.implicitly_wait(20) # 隐性等待，最长等30秒  </span><br><span class="line">driver.get(&apos;http://ehrtest.source3g.com/auth//#/login?ehr&apos;)</span><br><span class="line">driver.quit()</span><br></pre></td></tr></table></figure>
-<p>优点：简单方便.<br>缺点：因为随着ajax技术的广泛应用,<br>页面的元素往往都可以时间局部加载,<br>也就是在整个页面没有加载完的时候,<br>可能我们需要的元素已经加载完成了,<br>那就么有必要再等待整个页面的加载<br>执行进行下一步，而隐性等待满足不了这一点.</p>
-<hr>
-<h2 id="显性等待（WebDriverWait）"><a href="#显性等待（WebDriverWait）" class="headerlink" title="显性等待（WebDriverWait）"></a>显性等待（WebDriverWait）</h2><p>selenium中的wait模块的WebDriverWait()方法,<br>配合until或者until_not方法，再辅助以一些判断条件,<br>就可以构成这样一个场景：每经过多少秒就查看一次locator的元素是否可见,<br>如果可见就停止等待，如果不可见就继续等待直到超过规定的时间后，报超时异常。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">from selenium import webdriver  </span><br><span class="line">from selenium.webdriver.support.wait import WebDriverWait  </span><br><span class="line">from selenium.webdriver.support import expected_conditions as EC  </span><br><span class="line">from selenium.webdriver.common.by import By  </span><br><span class="line">driver = webdriver.Firefox()</span><br><span class="line">driver.get(&apos;http://ehrtest.source3g.com/auth//#/login?ehr&apos;) </span><br><span class="line">WebDriverWait(driver,20,0.5).until(EC.presence_of_element_located((By.XPATH, &apos;.//*[@id=&apos;app&apos;]/div/div[2]/form/div[3]/button&apos;)))  </span><br><span class="line">driver.implicitly_wait(20) </span><br><span class="line">driver.close()</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">20：最长等待时间。</span><br><span class="line">0.5：检查间隔时间，每隔0.5秒检查一次操作是否完成。</span><br><span class="line">EC.presence_of_element_located(locator)：判断目标元素是否已经成功加载.</span><br></pre></td></tr></table></figure>
+        <p>不知道你们在使用jmeter的时候有没有遇到过类似于我这样的问题，就是对于json格式的返回值要取其中某个key的value值，如果用正则表达式取的话就往往会取到空值。或者会把所有的匹配的key写出来。因此为了方便提取可以选择使用JSON Extractor进行提取</p>
+<p><img src="/jmeter-1/1.png" alt="connect"></p>
+<p>例如：</p>
+<p>请求的接口返回值：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;code&quot;:200,</span><br><span class="line">    &quot;data&quot;:</span><br><span class="line">    &#123;</span><br><span class="line">        &quot;list&quot;:</span><br><span class="line">        [</span><br><span class="line">            &#123;</span><br><span class="line">                &quot;id&quot;:136,</span><br><span class="line">                &quot;insertTime&quot;:&quot;2018-08-13 10:46:23&quot;,</span><br><span class="line">                &quot;item&quot;:</span><br><span class="line">                &#123;</span><br><span class="line">                &#125;,</span><br><span class="line">                &quot;num&quot;:1,</span><br><span class="line">                &quot;priceType&quot;:1,</span><br><span class="line">                &quot;skuId&quot;:43,</span><br><span class="line">                &quot;uid&quot;:&quot;745112018080615551&quot;,</span><br><span class="line">                &quot;updateTime&quot;:&quot;2018-08-13 10:46:23&quot;</span><br><span class="line">            &#125;,</span><br><span class="line">            &#123;</span><br><span class="line">                &quot;id&quot;:101,</span><br><span class="line">                &quot;insertTime&quot;:&quot;2018-08-07 17:27:55&quot;,</span><br><span class="line">                &quot;item&quot;:</span><br><span class="line">                &#123;</span><br><span class="line">                    &quot;canRefund&quot;:0,</span><br><span class="line">                    &quot;courseId&quot;:2,</span><br><span class="line">                    &quot;courseName&quot;:&quot;18328343333 计组&quot;,</span><br><span class="line">                    &quot;icon&quot;:&quot;test/pic/1796308711224902736.jpg&quot;,</span><br><span class="line">                    &quot;orgId&quot;:1,</span><br><span class="line">                    &quot;orgName&quot;:&quot;18328341111 的学校&quot;,</span><br><span class="line">                    &quot;prices&quot;:</span><br><span class="line">                    [</span><br><span class="line">                        &#123;</span><br><span class="line">                            &quot;currency&quot;:1,</span><br><span class="line">                            &quot;gmtCreate&quot;:&quot;2018-08-03 14:08:21&quot;,</span><br><span class="line">                            &quot;gmtUpdate&quot;:&quot;2018-08-03 14:08:21&quot;,</span><br><span class="line">                            &quot;id&quot;:3,</span><br><span class="line">                            &quot;itemId&quot;:2,</span><br><span class="line">                            &quot;marketPrice&quot;:100.20,</span><br><span class="line">                            &quot;orginPrice&quot;:200.20</span><br><span class="line">                        &#125;,</span><br></pre></td></tr></table></figure></p>
+<p>我需要取里面的id值作为参数传递到下一个接口。如图：</p>
+<p><img src="/jmeter-1/2.png" alt="connect"></p>
+<p>Variable names : 名称 </p>
+<p>JSONPath Expression：JSON表达式 </p>
+<p>Match Numbers：匹配哪个，可为空即默认第一个 </p>
+<p>Default Value：未取到值的时候默认值<br>使用<code>$.data.id</code>去提取id的值时，发现获取到的数据为空<br>原来这个responses 的data为数组，故应为<code>$.data.list[0].id</code> 提取第list数组中第1个id值</p>
+
       
     </div>
     
@@ -331,15 +336,15 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/Airtest-IDE-Study/" rel="next" title="Airtest-IDE">
+                <i class="fa fa-chevron-left"></i> Airtest-IDE
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/next-theme-bg/" rel="prev" title="Hexo中next主题自动变化图片">
-                Hexo中next主题自动变化图片 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -394,17 +399,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            Table of Contents
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            Overview
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -446,22 +442,6 @@
         </div>
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Python-selenium等待的区别"><span class="nav-number">1.</span> <span class="nav-text">Python selenium等待的区别</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#强制等待-sleep"><span class="nav-number">1.1.</span> <span class="nav-text">强制等待 sleep()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#隐性等待-implicitly-wait"><span class="nav-number">1.2.</span> <span class="nav-text">隐性等待 implicitly_wait()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#显性等待（WebDriverWait）"><span class="nav-number">1.3.</span> <span class="nav-text">显性等待（WebDriverWait）</span></a></li></ol></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       

@@ -232,6 +232,135 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://firsttimetogithub.github.io/jmeter-1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Crystal_Girl">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="crystal's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/jmeter-1/" itemprop="url">jmeter之正则表达式&JSON Path Extractor</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-08-13T00:00:00+08:00">
+                2018-08-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>不知道你们在使用jmeter的时候有没有遇到过类似于我这样的问题，就是对于json格式的返回值要取其中某个key的value值，如果用正则表达式取的话就往往会取到空值。或者会把所有的匹配的key写出来。因此为了方便提取可以选择使用JSON Extractor进行提取</p>
+<p><img src="/jmeter-1/1.png" alt="connect"></p>
+<p>例如：</p>
+<p>请求的接口返回值：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;code&quot;:200,</span><br><span class="line">    &quot;data&quot;:</span><br><span class="line">    &#123;</span><br><span class="line">        &quot;list&quot;:</span><br><span class="line">        [</span><br><span class="line">            &#123;</span><br><span class="line">                &quot;id&quot;:136,</span><br><span class="line">                &quot;insertTime&quot;:&quot;2018-08-13 10:46:23&quot;,</span><br><span class="line">                &quot;item&quot;:</span><br><span class="line">                &#123;</span><br><span class="line">                &#125;,</span><br><span class="line">                &quot;num&quot;:1,</span><br><span class="line">                &quot;priceType&quot;:1,</span><br><span class="line">                &quot;skuId&quot;:43,</span><br><span class="line">                &quot;uid&quot;:&quot;745112018080615551&quot;,</span><br><span class="line">                &quot;updateTime&quot;:&quot;2018-08-13 10:46:23&quot;</span><br><span class="line">            &#125;,</span><br><span class="line">            &#123;</span><br><span class="line">                &quot;id&quot;:101,</span><br><span class="line">                &quot;insertTime&quot;:&quot;2018-08-07 17:27:55&quot;,</span><br><span class="line">                &quot;item&quot;:</span><br><span class="line">                &#123;</span><br><span class="line">                    &quot;canRefund&quot;:0,</span><br><span class="line">                    &quot;courseId&quot;:2,</span><br><span class="line">                    &quot;courseName&quot;:&quot;18328343333 计组&quot;,</span><br><span class="line">                    &quot;icon&quot;:&quot;test/pic/1796308711224902736.jpg&quot;,</span><br><span class="line">                    &quot;orgId&quot;:1,</span><br><span class="line">                    &quot;orgName&quot;:&quot;18328341111 的学校&quot;,</span><br><span class="line">                    &quot;prices&quot;:</span><br><span class="line">                    [</span><br><span class="line">                        &#123;</span><br><span class="line">                            &quot;currency&quot;:1,</span><br><span class="line">                            &quot;gmtCreate&quot;:&quot;2018-08-03 14:08:21&quot;,</span><br><span class="line">                            &quot;gmtUpdate&quot;:&quot;2018-08-03 14:08:21&quot;,</span><br><span class="line">                            &quot;id&quot;:3,</span><br><span class="line">                            &quot;itemId&quot;:2,</span><br><span class="line">                            &quot;marketPrice&quot;:100.20,</span><br><span class="line">                            &quot;orginPrice&quot;:200.20</span><br><span class="line">                        &#125;,</span><br></pre></td></tr></table></figure></p>
+<p>我需要取里面的id值作为参数传递到下一个接口。如图：</p>
+<p><img src="/jmeter-1/2.png" alt="connect"></p>
+<p>Variable names : 名称 </p>
+<p>JSONPath Expression：JSON表达式 </p>
+<p>Match Numbers：匹配哪个，可为空即默认第一个 </p>
+<p>Default Value：未取到值的时候默认值<br>使用<code>$.data.id</code>去提取id的值时，发现获取到的数据为空<br>原来这个responses 的data为数组，故应为<code>$.data.list[0].id</code> 提取第list数组中第1个id值</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://firsttimetogithub.github.io/Airtest-IDE-Study/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -825,361 +954,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://firsttimetogithub.github.io/robot-framework-2/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Crystal_Girl">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="crystal's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/robot-framework-2/" itemprop="url">robotframework（二）</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-07-16T17:42:56+08:00">
-                2018-07-16
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="robotframework-变量的使用"><a href="#robotframework-变量的使用" class="headerlink" title="robotframework 变量的使用"></a>robotframework 变量的使用</h2><p>1、在判断中使用<br>例如：Set Variable If就是一个典型的例子。再例如下面的:</p>
-<table>
-<thead>
-<tr>
-<th>Run Keywork If</th>
-<th>‘${val2}==’abcd’</th>
-<th>log</th>
-<th>efgh</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<p>这个例子表示：如果说${val2}和abcd字符串相等，那么就运行log后面的关键字，打印efgh<br>运行结果如下：</p>
-<p><img src="/robot-framework-2/8.png" alt="connect"></p>
-<p>2、字符串使用<br>简单的一种方法就是字符串的链接，例如：</p>
-<table>
-<thead>
-<tr>
-<th>log</th>
-<th>0123${val2}efgh</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<p>运行结果如下：</p>
-<p><img src="/robot-framework-2/9.png" alt="connect"><br>还有一种就是字符串的截取例如：</p>
-<table>
-<thead>
-<tr>
-<th>log</th>
-<th>${val2[2]}  </th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>log</td>
-<td>${val[0:3]  </td>
-</tr>
-</tbody>
-</table>
-<p>注意：“[]”里写的是字符串的index索引位置、[0:3]表示index=0到3的截取</p>
-<p>运行结果如图：</p>
-<p><img src="/robot-framework-2/10.png" alt="connect"></p>
-<p>3、参与运算<br>在参与运算的时候需要用到关键字：Evaluate<br>例如：</p>
-<table>
-<thead>
-<tr>
-<th>${cal1}</th>
-<th>Set Variable</th>
-<th>123</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>${cal2}</td>
-<td>Evaluate</td>
-<td>${cal1}+1</td>
-</tr>
-</tbody>
-</table>
-<p>这里跟变量${cal1}赋值为123，然后Evaluate让它+1<br>结果如图：</p>
-<p><img src="/robot-framework-2/11.png" alt="connect"></p>
-<p>但是某些时候你的变量值是字符串的时候，就需要使用强制转换函数int,例如：</p>
-<table>
-<thead>
-<tr>
-<th>${cal1}</th>
-<th>Set Variable</th>
-<th>‘123’</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>${cal2}</td>
-<td>Evaluate</td>
-<td>int(${cal1})+1</td>
-</tr>
-</tbody>
-</table>
-<p>结果如图：</p>
-<p><img src="/robot-framework-2/12.png" alt="connect"></p>
-<hr>
-<h2 id="List变量的使用"><a href="#List变量的使用" class="headerlink" title="List变量的使用"></a>List变量的使用</h2><hr>
-<h3 id="List变量赋值"><a href="#List变量赋值" class="headerlink" title="List变量赋值"></a>List变量赋值</h3><p>List和Scalar类似都可以使用Set Variable来赋值，但是如果使用了Set Variable来赋值的话，会使得把一个List变量或者多个Scalar变量形成的List转换给一个Scalar变量。因此如果你想得到一个真正的List变量。更多的推荐使用：Create List来创建<br>例如：</p>
-<table>
-<thead>
-<tr>
-<th>@{val3}</th>
-<th>Set Variable</th>
-<th>1</th>
-<th>2</th>
-<th>3</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>@{listVal3}</td>
-<td>Create List</td>
-<td>3</td>
-<td>2</td>
-<td>1</td>
-</tr>
-</tbody>
-</table>
-<p>结果如图所示：</p>
-<p><img src="/robot-framework-2/13.png" alt="connect"></p>
-<hr>
-<h3 id="变量使用"><a href="#变量使用" class="headerlink" title="变量使用"></a>变量使用</h3><p>当我们使用Ctrl+空格键调用出Content Assitant的时候，通常会展示出该方法或者该关键字的使用方法。如图：</p>
-<p><img src="/robot-framework-2/14.png" alt="connect"></p>
-<p>此时关键字中有两个参数：name,*args。此时name就代表可以传参类型是Scalar类型的参数，*args代表的是可以传递List变量。因此由此可以见得：带*号是指可以传递List类型参数</p>
-<p>List元素值的获取方式一般有两种，正常的获取方式是：@{变量名}[index],index就是索引值<br>另外一种：${变量名[index]}，里面的index也是索引值，如果说是多维list，如果说取单个元素就一个[],如果要取多维的话，有几维就几个[]。<br>1.一维List</p>
-<table>
-<thead>
-<tr>
-<th>@{userList}</th>
-<th>Create List</th>
-<th>a</th>
-<th>b</th>
-<th>c</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>log</td>
-<td>@{userList}[1]</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>log</td>
-<td>${userList[1]}</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<p>运行结果如图：</p>
-<p><img src="/robot-framework-2/15.png" alt="connect"></p>
-<p>2.多维List</p>
-<table>
-<thead>
-<tr>
-<th>@{listA}</th>
-<th>Create List</th>
-<th>1</th>
-<th>2</th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>@{listB}</td>
-<td>Create List</td>
-<td>3</td>
-<td>4</td>
-<td></td>
-</tr>
-<tr>
-<td>@{listC}</td>
-<td>Create List</td>
-<td>${listA}</td>
-<td>$listB</td>
-<td>5</td>
-</tr>
-<tr>
-<td>log</td>
-<td>@{listC[1]}[1]</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<p>运行结果如图：</p>
-<p><img src="/robot-framework-2/16.png" alt="connect"></p>
-<h3 id="变量转换"><a href="#变量转换" class="headerlink" title="变量转换"></a>变量转换</h3><p>1、List转换成Scalar</p>
-<table>
-<thead>
-<tr>
-<th>@{list1}</th>
-<th>Create List</th>
-<th>abcd</th>
-<th>EFGH</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>log</td>
-<td>${list1}</td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<p>运行结果：</p>
-<p><img src="/robot-framework-2/17.png" alt="connect"></p>
-<p>2、Scalar变量转换成List</p>
-<table>
-<thead>
-<tr>
-<th>${list1}</th>
-<th>Create List</th>
-<th>abcd</th>
-<th>EFGH</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>log</td>
-<td>=@{list1}=</td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<p>运行结果：</p>
-<p><img src="/robot-framework-2/18.png" alt="connect"></p>
-<p>3、转换限制</p>
-<p>注意在对变量类型进行转换过程中如果说目标变量没有进行初始化过或者赋值过，那么就可以进行类型转换，但是如果目标变量已经初始化或者赋值那么就无法进行变量的类型转换。</p>
-<p>4、Dictionary变量<br>Dictionary变量每一个元素都是以Key、Value形式存放。比如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;key1:val1,key2:val2&#125; # 其中一个key对应一个value。key不能重复出现</span><br></pre></td></tr></table></figure></p>
-<p>5、对象变量</p>
-<p>对象变量是在接口测试中Request测试库中出现。例如${return}是接口返回的对象。一般我们是获取该对象中某个属性值。例如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$&#123;return.STATUS&#125; # 获取return对象中的返回状态值</span><br><span class="line">$&#123;return.CONTENT&#125; # 获取对象内容</span><br></pre></td></tr></table></figure></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1230,7 +1004,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">12</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
