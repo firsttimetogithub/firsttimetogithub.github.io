@@ -232,6 +232,128 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://firsttimetogithub.github.io/Gitlab-CI/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Crystal_Girl">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="crystal's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/Gitlab-CI/" itemprop="url">Gitlab-CI自动化集成测试</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-04-22T17:28:20+08:00">
+                2019-04-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h5 id="yml文件"><a href="#yml文件" class="headerlink" title="yml文件"></a>yml文件</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"># stages:</span><br><span class="line">#   - build</span><br><span class="line">#   - test</span><br><span class="line">#   - deploy</span><br><span class="line"># job1:</span><br><span class="line">#   stage: build</span><br><span class="line">#   script: </span><br><span class="line">#     - &apos;pwd &amp;&amp; /usr/local/maven/apache-maven-3.2.5/bin/mvn clean package&apos;</span><br><span class="line">#   tags:</span><br><span class="line">#     - hgr</span><br><span class="line">    </span><br><span class="line">job2:</span><br><span class="line">  stage: test</span><br><span class="line">  script: </span><br><span class="line">    # - &apos;D:/apache-maven-3.3.9/bin/mvn test&apos;</span><br><span class="line">    # - &apos;D:/apache-maven-3.3.9/bin/mvn jacoco:report&apos;</span><br><span class="line">    # - &apos;echo \&quot;$(cat target/site/jacoco/testcoverage.txt)% covered\&quot;&apos;</span><br><span class="line">    - &apos;D:/apache-maven-3.3.9/bin/mvn clean test &amp;&amp; type E:\GitLab-Runner\builds\jut3BULm\0\caojunjie\test\target\site\jacoco\index.html&apos;</span><br><span class="line">  tags:</span><br><span class="line">    - Test_ci    </span><br><span class="line">    </span><br><span class="line"># job2:</span><br><span class="line">#   stage: deploy</span><br><span class="line">#   script: </span><br><span class="line">#     - &apos;pwd &amp;&amp; /usr/local/maven/apache-maven-3.2.5/bin/mvn deploy&apos;</span><br><span class="line">#   tags:</span><br><span class="line">#     - hgr</span><br></pre></td></tr></table></figure>
+<h4 id="需要配置的-pom文件"><a href="#需要配置的-pom文件" class="headerlink" title="需要配置的 pom文件"></a>需要配置的 pom文件</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br></pre></td><td class="code"><pre><span class="line">&lt;project xmlns=&quot;http://maven.apache.org/POM/4.0.0&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xsi:schemaLocation=&quot;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&quot;&gt;</span><br><span class="line">  &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;</span><br><span class="line">  &lt;groupId&gt;com.test.jacoco&lt;/groupId&gt;</span><br><span class="line">  &lt;artifactId&gt;testJacoco&lt;/artifactId&gt;</span><br><span class="line">  &lt;version&gt;0.0.1-SNAPSHOT&lt;/version&gt;</span><br><span class="line"></span><br><span class="line">  &lt;name&gt;JaCoCo Examples&lt;/name&gt;</span><br><span class="line"></span><br><span class="line">  &lt;properties&gt;</span><br><span class="line">    &lt;project.build.sourceEncoding&gt;UTF-8&lt;/project.build.sourceEncoding&gt;</span><br><span class="line">    &lt;project.reporting.outputEncoding&gt;UTF-8&lt;/project.reporting.outputEncoding&gt;</span><br><span class="line"></span><br><span class="line">    &lt;!-- Sonar --&gt;</span><br><span class="line">    &lt;sonar.java.coveragePlugin&gt;jacoco&lt;/sonar.java.coveragePlugin&gt;</span><br><span class="line">    &lt;sonar.dynamicAnalysis&gt;reuseReports&lt;/sonar.dynamicAnalysis&gt;</span><br><span class="line">    &lt;!-- The destination file for the code coverage report has to be set to the same value</span><br><span class="line">         in the parent pom and in each module pom. Then JaCoCo will add up information in</span><br><span class="line">         the same report, so that, it will give the cross-module code coverage. --&gt;</span><br><span class="line">    &lt;sonar.jacoco.itReportPath&gt;$&#123;project.basedir&#125;/target/jacoco.exec&lt;/sonar.jacoco.itReportPath&gt;</span><br><span class="line">    &lt;sonar.language&gt;java&lt;/sonar.language&gt;</span><br><span class="line">  &lt;/properties&gt;</span><br><span class="line"></span><br><span class="line">  &lt;dependencies&gt;</span><br><span class="line">    &lt;!--</span><br><span class="line">      &lt;dependency&gt;</span><br><span class="line">        &lt;groupId&gt;junit&lt;/groupId&gt;</span><br><span class="line">        &lt;artifactId&gt;junit&lt;/artifactId&gt;</span><br><span class="line">        &lt;version&gt;4.8.1&lt;/version&gt;</span><br><span class="line">        &lt;scope&gt;test&lt;/scope&gt;</span><br><span class="line">      &lt;/dependency&gt;</span><br><span class="line">       --&gt;</span><br><span class="line">    &lt;dependency&gt;</span><br><span class="line">      &lt;groupId&gt;junit&lt;/groupId&gt;</span><br><span class="line">      &lt;artifactId&gt;junit&lt;/artifactId&gt;</span><br><span class="line">      &lt;version&gt;4.11&lt;/version&gt;</span><br><span class="line">      &lt;scope&gt;test&lt;/scope&gt;</span><br><span class="line">    &lt;/dependency&gt;</span><br><span class="line">  &lt;/dependencies&gt;</span><br><span class="line"></span><br><span class="line">  &lt;build&gt;</span><br><span class="line">    &lt;pluginManagement&gt;</span><br><span class="line">      &lt;plugins&gt;</span><br><span class="line">        &lt;plugin&gt;</span><br><span class="line">          &lt;groupId&gt;org.jacoco&lt;/groupId&gt;</span><br><span class="line">          &lt;artifactId&gt;jacoco-maven-plugin&lt;/artifactId&gt;</span><br><span class="line">          &lt;version&gt;0.5.3.201107060350&lt;/version&gt;</span><br><span class="line">        &lt;/plugin&gt;</span><br><span class="line">      &lt;/plugins&gt;</span><br><span class="line">    &lt;/pluginManagement&gt;</span><br><span class="line"></span><br><span class="line">    &lt;plugins&gt;</span><br><span class="line">      &lt;plugin&gt;</span><br><span class="line">        &lt;groupId&gt;org.jacoco&lt;/groupId&gt;</span><br><span class="line">        &lt;artifactId&gt;jacoco-maven-plugin&lt;/artifactId&gt;</span><br><span class="line">        &lt;configuration&gt;</span><br><span class="line">          &lt;includes&gt;com.*&lt;/includes&gt;</span><br><span class="line">        &lt;/configuration&gt;</span><br><span class="line">        &lt;executions&gt;</span><br><span class="line">          &lt;execution&gt;</span><br><span class="line">            &lt;id&gt;pre-test&lt;/id&gt;</span><br><span class="line">            &lt;goals&gt;</span><br><span class="line">              &lt;goal&gt;prepare-agent&lt;/goal&gt;</span><br><span class="line">            &lt;/goals&gt;</span><br><span class="line">          &lt;/execution&gt;</span><br><span class="line">          &lt;execution&gt;</span><br><span class="line">            &lt;id&gt;post-test&lt;/id&gt;</span><br><span class="line">            &lt;phase&gt;test&lt;/phase&gt;</span><br><span class="line">            &lt;goals&gt;</span><br><span class="line">              &lt;goal&gt;report&lt;/goal&gt;</span><br><span class="line">            &lt;/goals&gt;</span><br><span class="line">          &lt;/execution&gt;</span><br><span class="line">        &lt;/executions&gt;</span><br><span class="line">      &lt;/plugin&gt;</span><br><span class="line">      &lt;plugin&gt;</span><br><span class="line">        &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;</span><br><span class="line">        &lt;artifactId&gt;maven-compiler-plugin&lt;/artifactId&gt;</span><br><span class="line">        &lt;configuration&gt;</span><br><span class="line">          &lt;source&gt;1.5&lt;/source&gt;</span><br><span class="line">          &lt;target&gt;1.5&lt;/target&gt;</span><br><span class="line">        &lt;/configuration&gt;</span><br><span class="line">      &lt;/plugin&gt;</span><br><span class="line">    &lt;/plugins&gt;</span><br><span class="line">  &lt;/build&gt;</span><br><span class="line"></span><br><span class="line">&lt;/project&gt;</span><br></pre></td></tr></table></figure>
+<h4 id="需要在gitlab-ci中配置："><a href="#需要在gitlab-ci中配置：" class="headerlink" title="需要在gitlab ci中配置："></a>需要在gitlab ci中配置：</h4><h4 id="测试覆盖率解析为"><a href="#测试覆盖率解析为" class="headerlink" title="测试覆盖率解析为:"></a>测试覆盖率解析为:</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Total.*?([0-9]&#123;1,3&#125;)%</span><br></pre></td></tr></table></figure>
+<h4 id="复制Pipeline-status-Coverage-report中的html连接到readme-xml中。"><a href="#复制Pipeline-status-Coverage-report中的html连接到readme-xml中。" class="headerlink" title="复制Pipeline status/Coverage report中的html连接到readme.xml中。"></a>复制Pipeline status/Coverage report中的html连接到readme.xml中。</h4><h4 id="直接就会项目首页中显示出来覆盖率和pieline的状态和覆盖率"><a href="#直接就会项目首页中显示出来覆盖率和pieline的状态和覆盖率" class="headerlink" title="直接就会项目首页中显示出来覆盖率和pieline的状态和覆盖率"></a>直接就会项目首页中显示出来覆盖率和pieline的状态和覆盖率</h4>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://firsttimetogithub.github.io/selenium-frame/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -784,155 +906,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://firsttimetogithub.github.io/robotframework-5/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Crystal_Girl">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="crystal's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/robotframework-5/" itemprop="url">Robot Framework持续集成到Jenkins</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-07-24T16:56:10+08:00">
-                2018-07-24
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="Robot-Framework集成到Jenkins"><a href="#Robot-Framework集成到Jenkins" class="headerlink" title="Robot Framework集成到Jenkins"></a>Robot Framework集成到Jenkins</h2><h3 id="安装Jenkins的robot-framework插件"><a href="#安装Jenkins的robot-framework插件" class="headerlink" title="安装Jenkins的robot framework插件"></a>安装Jenkins的robot framework插件</h3><p>进入Jenkins-&gt;系统管理-&gt;插件管理-&gt;找到’robot framework plugin</p>
-<p><img src="/robotframework-5/1.png" alt="connect"></p>
-<h3 id="新建任务"><a href="#新建任务" class="headerlink" title="新建任务"></a>新建任务</h3><p><img src="/robotframework-5/2.png" alt="connect"></p>
-<p><img src="/robotframework-5/3.png" alt="connect"></p>
-<h3 id="配置构建"><a href="#配置构建" class="headerlink" title="配置构建"></a>配置构建</h3><p>进入EHR_Test-&gt;配置-&gt;构建</p>
-<p><img src="/robotframework-5/4.png" alt="connect"><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pybot.bat --argumentfile c:\users\administrator\appdata\local\temp\RIDEc9tgmz.d\argfile.txt --listener C:\Python27\lib\site-packages\robotide\contrib\testrunner\TestRunnerAgent.py:51679:False D:\python\robotframework\TestProject\Test\EHR</span><br></pre></td></tr></table></figure></p>
-<p>注意：这里的command命令是复制RIDE控制台里面的如图：</p>
-<p><img src="/robotframework-5/5.png" alt="connect"></p>
-<p>如果这里的代码无法运行报错，请输入call &gt;&gt;例如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">call pybot.bat D:\python\robotframework\TestProject\Test\EHR</span><br><span class="line">exit 0</span><br></pre></td></tr></table></figure></p>
-<p><img src="/robotframework-5/14.png" alt="connect"></p>
-<h3 id="构建后的操作"><a href="#构建后的操作" class="headerlink" title="构建后的操作"></a>构建后的操作</h3><p>选择“Publish Robot Framework test results” </p>
-<p><img src="/robotframework-5/6.png" alt="connect"></p>
-<p>注意这里的输出report报告地址是来自于RIDE控制台中的输出报告位置复制过来</p>
-<p>设置邮件报告：<br>1、选择Editable Email Notification</p>
-<p><img src="/robotframework-5/7.png" alt="connect"></p>
-<p>2、default content代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;hr/&gt;</span><br><span class="line"></span><br><span class="line">(本邮件是程序自动下发的，请勿回复！)&lt;br/&gt;&lt;hr/&gt;</span><br><span class="line"></span><br><span class="line">项目名称：$PROJECT_NAME&lt;br/&gt;&lt;hr/&gt;</span><br><span class="line"></span><br><span class="line">构建编号：$BUILD_NUMBER&lt;br/&gt;&lt;hr/&gt;</span><br><span class="line"></span><br><span class="line">构建状态：$BUILD_STATUS&lt;br/&gt;&lt;hr/&gt;</span><br><span class="line"></span><br><span class="line">触发原因：$&#123;CAUSE&#125;&lt;br/&gt;&lt;hr/&gt;</span><br><span class="line"></span><br><span class="line">测试报告：&lt;a href=&quot;http://localhost:8080/job/EHR_Test001/10/robot/report/report.html&quot;&gt;&lt;/a&gt;http://localhost:8080/job/EHR_Test001/10/robot/report/report.html&lt;br/&gt;&lt;hr/&gt;</span><br><span class="line"></span><br><span class="line">变更集:$&#123;JELLY_SCRIPT,template=&quot;html&quot;&#125;&lt;br/&gt;&lt;hr/&gt;</span><br></pre></td></tr></table></figure></p>
-<p>3、添加trigger</p>
-<p><img src="/robotframework-5/8.png" alt="connect"></p>
-<p>4、完成</p>
-<h3 id="在Jenkins设置中节点"><a href="#在Jenkins设置中节点" class="headerlink" title="在Jenkins设置中节点"></a>在Jenkins设置中节点</h3><p>点击“Jenkins”-&gt;系统管理-&gt;节点管理-&gt;master节点<br>勾选“环境变量”</p>
-<p><img src="/robotframework-5/9.png" alt="connect"></p>
-<h3 id="立即构建项目"><a href="#立即构建项目" class="headerlink" title="立即构建项目"></a>立即构建项目</h3><p>设置好环境变量之后回到JOB中点击“立即构建”</p>
-<p><img src="/robotframework-5/10.png" alt="connect"></p>
-<p>构建后的效果如下：</p>
-<p><img src="/robotframework-5/11.png" alt="connect"></p>
-<p>可以点击“openreport.html”查看详细的测试报告，如图：</p>
-<p><img src="/robotframework-5/12.png" alt="connect"></p>
-<p>进入个人邮箱查看邮件，如图：</p>
-<p><img src="/robotframework-5/13.png" alt="connect"></p>
-<p>可以点击上面“测试报告”URL地址查看详细的测试报告信息</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -983,7 +956,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-count">15</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

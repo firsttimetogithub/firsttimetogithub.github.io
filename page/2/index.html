@@ -232,6 +232,155 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://firsttimetogithub.github.io/robotframework-5/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Crystal_Girl">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="crystal's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/robotframework-5/" itemprop="url">Robot Framework持续集成到Jenkins</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-07-24T16:56:10+08:00">
+                2018-07-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Robot-Framework集成到Jenkins"><a href="#Robot-Framework集成到Jenkins" class="headerlink" title="Robot Framework集成到Jenkins"></a>Robot Framework集成到Jenkins</h2><h3 id="安装Jenkins的robot-framework插件"><a href="#安装Jenkins的robot-framework插件" class="headerlink" title="安装Jenkins的robot framework插件"></a>安装Jenkins的robot framework插件</h3><p>进入Jenkins-&gt;系统管理-&gt;插件管理-&gt;找到’robot framework plugin</p>
+<p><img src="/robotframework-5/1.png" alt="connect"></p>
+<h3 id="新建任务"><a href="#新建任务" class="headerlink" title="新建任务"></a>新建任务</h3><p><img src="/robotframework-5/2.png" alt="connect"></p>
+<p><img src="/robotframework-5/3.png" alt="connect"></p>
+<h3 id="配置构建"><a href="#配置构建" class="headerlink" title="配置构建"></a>配置构建</h3><p>进入EHR_Test-&gt;配置-&gt;构建</p>
+<p><img src="/robotframework-5/4.png" alt="connect"><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pybot.bat --argumentfile c:\users\administrator\appdata\local\temp\RIDEc9tgmz.d\argfile.txt --listener C:\Python27\lib\site-packages\robotide\contrib\testrunner\TestRunnerAgent.py:51679:False D:\python\robotframework\TestProject\Test\EHR</span><br></pre></td></tr></table></figure></p>
+<p>注意：这里的command命令是复制RIDE控制台里面的如图：</p>
+<p><img src="/robotframework-5/5.png" alt="connect"></p>
+<p>如果这里的代码无法运行报错，请输入call &gt;&gt;例如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">call pybot.bat D:\python\robotframework\TestProject\Test\EHR</span><br><span class="line">exit 0</span><br></pre></td></tr></table></figure></p>
+<p><img src="/robotframework-5/14.png" alt="connect"></p>
+<h3 id="构建后的操作"><a href="#构建后的操作" class="headerlink" title="构建后的操作"></a>构建后的操作</h3><p>选择“Publish Robot Framework test results” </p>
+<p><img src="/robotframework-5/6.png" alt="connect"></p>
+<p>注意这里的输出report报告地址是来自于RIDE控制台中的输出报告位置复制过来</p>
+<p>设置邮件报告：<br>1、选择Editable Email Notification</p>
+<p><img src="/robotframework-5/7.png" alt="connect"></p>
+<p>2、default content代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;hr/&gt;</span><br><span class="line"></span><br><span class="line">(本邮件是程序自动下发的，请勿回复！)&lt;br/&gt;&lt;hr/&gt;</span><br><span class="line"></span><br><span class="line">项目名称：$PROJECT_NAME&lt;br/&gt;&lt;hr/&gt;</span><br><span class="line"></span><br><span class="line">构建编号：$BUILD_NUMBER&lt;br/&gt;&lt;hr/&gt;</span><br><span class="line"></span><br><span class="line">构建状态：$BUILD_STATUS&lt;br/&gt;&lt;hr/&gt;</span><br><span class="line"></span><br><span class="line">触发原因：$&#123;CAUSE&#125;&lt;br/&gt;&lt;hr/&gt;</span><br><span class="line"></span><br><span class="line">测试报告：&lt;a href=&quot;http://localhost:8080/job/EHR_Test001/10/robot/report/report.html&quot;&gt;&lt;/a&gt;http://localhost:8080/job/EHR_Test001/10/robot/report/report.html&lt;br/&gt;&lt;hr/&gt;</span><br><span class="line"></span><br><span class="line">变更集:$&#123;JELLY_SCRIPT,template=&quot;html&quot;&#125;&lt;br/&gt;&lt;hr/&gt;</span><br></pre></td></tr></table></figure></p>
+<p>3、添加trigger</p>
+<p><img src="/robotframework-5/8.png" alt="connect"></p>
+<p>4、完成</p>
+<h3 id="在Jenkins设置中节点"><a href="#在Jenkins设置中节点" class="headerlink" title="在Jenkins设置中节点"></a>在Jenkins设置中节点</h3><p>点击“Jenkins”-&gt;系统管理-&gt;节点管理-&gt;master节点<br>勾选“环境变量”</p>
+<p><img src="/robotframework-5/9.png" alt="connect"></p>
+<h3 id="立即构建项目"><a href="#立即构建项目" class="headerlink" title="立即构建项目"></a>立即构建项目</h3><p>设置好环境变量之后回到JOB中点击“立即构建”</p>
+<p><img src="/robotframework-5/10.png" alt="connect"></p>
+<p>构建后的效果如下：</p>
+<p><img src="/robotframework-5/11.png" alt="connect"></p>
+<p>可以点击“openreport.html”查看详细的测试报告，如图：</p>
+<p><img src="/robotframework-5/12.png" alt="connect"></p>
+<p>进入个人邮箱查看邮件，如图：</p>
+<p><img src="/robotframework-5/13.png" alt="connect"></p>
+<p>可以点击上面“测试报告”URL地址查看详细的测试报告信息</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://firsttimetogithub.github.io/robotframework-4/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1079,160 +1228,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://firsttimetogithub.github.io/Jmeter2/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Crystal_Girl">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="crystal's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/Jmeter2/" itemprop="url">Jmeter集成Jenkins</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-06-19T11:16:05+08:00">
-                2018-06-19
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="配置ANT"><a href="#配置ANT" class="headerlink" title="配置ANT"></a>配置ANT</h2><p>1.下载Ant（<a href="https://ant.apache.org/bindownload.cgi）" target="_blank" rel="noopener">https://ant.apache.org/bindownload.cgi）</a></p>
-<p>2.直接解压压缩包</p>
-<p>3.添加系统环境变量</p>
-<p><img src="/Jmeter2/1.png" alt="connect"><br><img src="/Jmeter2/2.png" alt="connect"></p>
-<p>4.cmd中运行ant -version 查看是否安装成功</p>
-<p><img src="/Jmeter2/4.png" alt="connect"></p>
-<h2 id="配置Jmeter"><a href="#配置Jmeter" class="headerlink" title="配置Jmeter"></a>配置Jmeter</h2><p>1.将 jmeter的extras目录中ant-jmeter-1.1.1.jar包拷贝至ant安装目录下的lib<br>目录中</p>
-<p>2.修改Jmeter的bin目录下jmeter.properties文件的配置：<br>==jmeter.save.saveservice.output_format=xml==</p>
-<p><img src="/Jmeter2/3.png" alt="connect"></p>
-<p>3.在jmeter安装路径下创建一个文件夹build，在build文件夹下面再创建一个文<br>件夹，此文件夹的名称与项目名一致，在项目文件夹下创建一个build.xml文<br>件.</p>
-<p><img src="/Jmeter2/5.png" alt="connect"></p>
-<p>内容：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span><br><span class="line">&lt;project name=&quot;ant-jmeter-test&quot; default=&quot;run&quot; basedir=&quot;.&quot;&gt;</span><br><span class="line">&lt;tstamp&gt;</span><br><span class="line">&lt;format property=&quot;time&quot; pattern=&quot;yyyyMMddhhmm&quot; /&gt;</span><br><span class="line">&lt;/tstamp&gt;</span><br><span class="line">&lt;!-- 需要改成自己本地的jmeter目录--&gt;</span><br><span class="line">&lt;property name=&quot;jmeter.home&quot; value=&quot;D:\软件\apache-jmeter-3.1&quot; /&gt;</span><br><span class="line">&lt;property name=&quot;ReportName&quot; value=&quot;TestReport&quot; /&gt;</span><br><span class="line">&lt;!-- jmeter生成的jtl格式的结果报告的路径--&gt;</span><br><span class="line">&lt;property name=&quot;jmeter.result.jtl.dir&quot; value=&quot;D:\Jenkins\workspace\Jmeter\jtl&quot;/&gt;</span><br><span class="line">&lt;!-- jmeter生成的html格式的结果报告的路径--&gt;</span><br><span class="line">&lt;property name=&quot;jmeter.result.html.dir&quot;</span><br><span class="line">value=&quot;D:\Jenkins\workspace\Jmeter\html&quot; /&gt;</span><br><span class="line">&lt;!-- ʺ生成的报告的前缀--&gt;</span><br><span class="line">&lt;property name=&quot;jmeter.result.jtlName&quot;</span><br><span class="line">value=&quot;$&#123;jmeter.result.jtl.dir&#125;/$&#123;ReportName&#125;.jtl&quot;/&gt;</span><br><span class="line">&lt;property name=&quot;jmeter.result.htmlName&quot;</span><br><span class="line">value=&quot;$&#123;jmeter.result.html.dir&#125;/$&#123;ReportName&#125;.html&quot; /&gt;</span><br><span class="line">&lt;!-- ʺ声明运行顺序--&gt;</span><br><span class="line">&lt;target name=&quot;run&quot;&gt;</span><br><span class="line">&lt;antcall target=&quot;test&quot; /&gt;</span><br><span class="line">&lt;antcall target=&quot;clean&quot; /&gt;</span><br><span class="line">&lt;antcall target=&quot;report&quot; /&gt;</span><br><span class="line">&lt;antcall target=&quot;cleanjt&quot; /&gt;</span><br><span class="line">&lt;/target&gt;</span><br><span class="line">&lt;target name=&quot;test&quot;&gt;</span><br><span class="line">&lt;taskdef name=&quot;jmeter&quot;</span><br><span class="line">classname=&quot;org.programmerplanet.ant.taskdefs.jmeter.JMeterTask&quot; /&gt;</span><br><span class="line">&lt;jmeter jmeterhome=&quot;$&#123;jmeter.home&#125;&quot; resultlog=&quot;$&#123;jmeter.result.jtlName&#125;&quot;&gt;</span><br><span class="line">&lt;!-- 声明要运行的脚本“*.jmx”指包含此目录下的所有jmeter脚本--&gt;</span><br><span class="line">&lt;testplans dir=&quot;D:\测试文件\测试\Jmeter_Script&quot; includes=&quot;*.jmx&quot; /&gt;</span><br><span class="line">&lt;property name=&quot;jmeter.save.saveservice.output_format&quot; value=&quot;xml&quot;/&gt;</span><br><span class="line">&lt;/jmeter&gt;</span><br><span class="line">&lt;/target&gt;</span><br><span class="line">&lt;path id=&quot;xslt.classpath&quot;&gt;</span><br><span class="line">&lt;fileset dir=&quot;$&#123;jmeter.home&#125;/lib&quot; includes=&quot;xalan*.jar&quot;/&gt;</span><br><span class="line">&lt;fileset dir=&quot;$&#123;jmeter.home&#125;/lib&quot; includes=&quot;serializer*.jar&quot;/&gt;</span><br><span class="line">&lt;/path&gt;</span><br><span class="line">&lt;target name=&quot;report&quot;&gt;</span><br><span class="line">&lt;tstamp&gt;</span><br><span class="line">&lt;format property=&quot;report.datestamp&quot; pattern=&quot;yyyy/MM/dd HH:mm&quot;</span><br><span class="line">/&gt;</span><br><span class="line">&lt;/tstamp&gt;</span><br><span class="line">&lt;xslt</span><br><span class="line">classpathref=&quot;xslt.classpath&quot;</span><br><span class="line">force=&quot;true&quot;</span><br><span class="line">in=&quot;$&#123;jmeter.result.jtlName&#125;&quot;</span><br><span class="line">out=&quot;$&#123;jmeter.result.htmlName&#125;&quot;</span><br><span class="line">style=&quot;$&#123;jmeter.home&#125;/extras/jmeter-results-detail-report_21.xsl&quot;&gt;</span><br><span class="line">&lt;param name=&quot;dateReport&quot; expression=&quot;$&#123;report.datestamp&#125;&quot;/&gt;</span><br><span class="line">&lt;/xslt&gt;</span><br><span class="line">&lt;!-- 拷贝报告所需的图片资源至目标目录 --&gt;</span><br><span class="line">&lt;copy todir=&quot;$&#123;jmeter.result.html.dir&#125;&quot;&gt;</span><br><span class="line">&lt;fileset dir=&quot;$&#123;jmeter.home&#125;/extras&quot;&gt;</span><br><span class="line">&lt;include name=&quot;collapse.png&quot; /&gt;</span><br><span class="line">&lt;include name=&quot;expand.png&quot; /&gt;</span><br><span class="line">&lt;/fileset&gt;</span><br><span class="line">&lt;/copy&gt;</span><br><span class="line">&lt;!-- ʺ定义删除Jmeter报告缓存--&gt;</span><br><span class="line">&lt;/target&gt;</span><br><span class="line">&lt;target name=&quot;clean&quot;&gt;</span><br><span class="line">&lt;delete dir=&quot;$&#123;jmeter.result.html.dir&#125;&quot; /&gt;</span><br><span class="line">&lt;delete file=&quot;$&#123;jmeter.result.htmlName&#125;&quot; /&gt;</span><br><span class="line">&lt;/target&gt;</span><br><span class="line">&lt;target name=&quot;cleanjt&quot;&gt;</span><br><span class="line">&lt;delete file=&quot;$&#123;jmeter.result.jtlName&#125;&quot; /&gt;</span><br><span class="line">&lt;/target&gt;</span><br><span class="line">&lt;/project&gt;</span><br></pre></td></tr></table></figure></p>
-<p>备注：<br>这块的运行逻辑是，ant运行Jmeter脚本，先生成jtl的缓存文件，再转为html的报告</p>
-<p>4.在build路径下创建run.bat文件，文件内容如下：（这一步仅作为检查用，可以省略）<br>%ANT_HOME%\bin\ant -f %JMETER_HOME%\Jmeter\build\build.xml<br>双击运行run文件，若在指定路径下（第六步文件中有指定路径）能都看到测试报告，则证明ant+Jmeter配置成功ant -f 意思是用来运行xml文件</p>
-<p>5.在Jenkins中配置ANT（系统管理-&gt;全局工具配置）</p>
-<p><img src="/Jmeter2/7.png" alt="connect"></p>
-<p>6.进入Jenkins的项目，打开配置，添加构建</p>
-<p><img src="/Jmeter2/8.png" alt="connect"></p>
-<p><img src="/Jmeter2/9.png" alt="connect"></p>
-<p>targets中是运行顺序，是build文件中配置的字段<br>build file后填写build文件所在路径</p>
-<h2 id="邮件发送配置"><a href="#邮件发送配置" class="headerlink" title="邮件发送配置"></a>邮件发送配置</h2><p>1.在Jenkins系统设置中设置Extended E-mail Notification：</p>
-<p><img src="/Jmeter2/10.png" alt="connect"></p>
-<p><img src="/Jmeter2/11.png" alt="connect"></p>
-<p>2.在构建项目中添加构建后操作：</p>
-<p><img src="/Jmeter2/12.png" alt="connect"></p>
-<p><img src="/Jmeter2/13.png" alt="connect"></p>
-<p>3.添加trigger操作：</p>
-<p><img src="/Jmeter2/14.png" alt="connect"></p>
-<p>4.在success中点击“高级”：</p>
-<p><img src="/Jmeter2/15.png" alt="connect"><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">subject:</span><br><span class="line">Jenkins构建通知:$PROJECT_NAME - Build # $BUILD_NUMBER-$BUILD_STATUS!</span><br></pre></td></tr></table></figure></p>
-<p>content:中的内容：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;  </span><br><span class="line">&lt;html&gt;  </span><br><span class="line">&lt;head&gt;  </span><br><span class="line">&lt;meta charset=&quot;UTF-8&quot;&gt;  </span><br><span class="line">&lt;title&gt;$&#123;ENV, var=&quot;JOB_NAME&quot;&#125;-第$&#123;BUILD_NUMBER&#125;次构建日志&lt;/title&gt;  </span><br><span class="line">&lt;/head&gt;  </span><br><span class="line"></span><br><span class="line">&lt;body leftmargin=&quot;8&quot; marginwidth=&quot;0&quot; topmargin=&quot;8&quot; marginheight=&quot;4&quot;  </span><br><span class="line">    offset=&quot;0&quot;&gt;  </span><br><span class="line">    &lt;div&gt;</span><br><span class="line">    &lt;table width=&quot;95%&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; </span><br><span class="line">        style=&quot;font-size: 11pt; font-family: Tahoma, Arial, Helvetica, sans-serif&quot;&gt; </span><br><span class="line"></span><br><span class="line">        &lt;tr&gt;</span><br><span class="line">            &lt;th align=&quot;center&quot; colspan=&quot;2&quot;&gt;&lt;br /&gt;</span><br><span class="line">                &lt;h2&gt;构建信息&lt;/h2&gt; </span><br><span class="line">            &lt;/th&gt;</span><br><span class="line">        &lt;/tr&gt;</span><br><span class="line">        &lt;tr&gt;  </span><br><span class="line">            &lt;td&gt;  </span><br><span class="line">                &lt;ul&gt;  </span><br><span class="line">                    &lt;li&gt;项目名称：$&#123;PROJECT_NAME&#125;&lt;/li&gt;                 </span><br><span class="line">                    &lt;li&gt;构建编号：$&#123;BUILD_NUMBER&#125;&lt;/li&gt;                    </span><br><span class="line">                    &lt;li&gt;触发原因：$&#123;CAUSE&#125;&lt;/li&gt;   </span><br><span class="line">                    &lt;li&gt;构建日志：&lt;a href=&quot;$&#123;BUILD_URL&#125;console&quot;&gt;$&#123;BUILD_URL&#125;console&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">                </span><br><span class="line">                    &lt;li&gt;项目  Url ： &lt;a href=&quot;$&#123;PROJECT_URL&#125;&quot;&gt;$&#123;PROJECT_URL&#125;&lt;/a&gt;&lt;/li&gt;&lt;br /&gt;</span><br><span class="line">                &lt;/ul&gt;  </span><br><span class="line">            &lt;/td&gt; </span><br><span class="line">            &lt;td&gt;$&#123;JELLY_SCRIPT,template=&quot;html&quot;&#125;&lt;br/&gt; </span><br><span class="line">        &lt;/tr&gt;  </span><br><span class="line"></span><br><span class="line">        &lt;tr&gt;  </span><br><span class="line">            &lt;td colspan=&quot;2&quot; align=&quot;center&quot;&gt;&lt;br /&gt;</span><br><span class="line">            &lt;h2&gt;测试报告&lt;/h2&gt;</span><br><span class="line">            &lt;/td&gt;  </span><br><span class="line">        &lt;/tr&gt;</span><br><span class="line"></span><br><span class="line">         &lt;tr&gt;</span><br><span class="line">            &lt;td colspan=&quot;2&quot; align=&quot;center&quot;&gt;</span><br><span class="line">                &lt;div&gt;$&#123;FILE,path=&quot;D:/Jenkins/workspace/Jmeter/html/TestReport.html&quot;&#125;&lt;/div&gt;</span><br><span class="line">            &lt;/td&gt;</span><br><span class="line">        &lt;/tr&gt;</span><br><span class="line"></span><br><span class="line">    &lt;/table&gt; </span><br><span class="line">    &lt;/div&gt;</span><br><span class="line"></span><br><span class="line">  &lt;/body&gt;  </span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure></p>
-<p>5.添加测试报告显示在邮件中：Publish HTML report<br>(如果在构建后操作中没有此插件，到Jenkins系统管理-插件管理中下载)</p>
-<p><img src="/Jmeter2/16.png" alt="connect"></p>
-<p>6.设置好以上步骤之后，接收到的邮件内容为：</p>
-<p><img src="/Jmeter2/17.png" alt="connect"></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1283,7 +1278,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-count">15</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
